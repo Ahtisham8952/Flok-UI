@@ -39,7 +39,7 @@ const EventsByCategory = () => {
     birthday: {
       banner: {
         heading: ' Birthday Events',
-        image: '/birthdayevents',
+        image: '/birthdayevents.svg',
       },
       
     },
@@ -53,7 +53,7 @@ const EventsByCategory = () => {
     today: {
       banner: {
         heading: ' Today Events',
-        image: '/todayevents',
+        image: '/todayevents.svg',
       },
       
     },
