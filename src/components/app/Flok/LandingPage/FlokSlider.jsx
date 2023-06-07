@@ -179,6 +179,7 @@ export default class SimpleSlider extends Component {
          <SliderCard image="/childplay-1.png" Name="Perry Unknown" TrxID="0x791274c1252EdF95C..."/>
           </Box>
           {FlokEventsData.map((li,index) => (
+            
   <Box key={index} p="10px" mx="10px" as={Link} href='/event' textDecoration={"none"} >
 
    
