@@ -36,7 +36,7 @@ const EventsByCategory = () => {
       },
       
     },
-    birthday: {
+    birthdays: {
       banner: {
         heading: ' Birthday Events',
         image: '/birthdayevents.svg',
