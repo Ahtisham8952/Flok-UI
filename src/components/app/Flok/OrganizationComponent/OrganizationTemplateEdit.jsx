@@ -202,11 +202,11 @@ import {
             >
               <FormControl>
                 <InputGroup bgColor="white" p="4" borderRadius="35">
-                  <Image src="user.svg"/>
+                  <Image alt="img" src="user.svg"/>
                   <Input type="Text" placeholder="Name" border="none" />
                 </InputGroup>
                 <InputGroup mt="20px" bgColor="white" p="4" borderRadius="35">
-                  <Image src="calendar.svg" />
+                  <Image alt="img" src="calendar.svg" />
                   <Input type="Text" placeholder="Date" border="none" />
                 </InputGroup>
                 <InputGroup
@@ -240,11 +240,11 @@ import {
             >
               <FormControl>
                 <InputGroup bgColor="white" p="4" borderRadius="35">
-                  <Image src="user.svg"/>
+                  <Image alt="img" src="user.svg"/>
                   <Input type="Text" placeholder="Name" border="none" />
                 </InputGroup>
                 <InputGroup mt="20px" bgColor="white" p="4" borderRadius="35">
-                  <Image src="calendar.svg" />
+                  <Image alt="img" src="calendar.svg" />
                   <Input type="Text" placeholder="Date" border="none" />
                 </InputGroup>
                 <InputGroup
