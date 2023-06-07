@@ -99,7 +99,7 @@ const EventsTabContent = () => {
             fontWeight="600"
             lineHeight={"150%"}
           >
-      This time, the people of Wakanda will fight to protect their country from interference by world powers after the death of King T'Challa. View Detail
+      This time, the people of Wakanda will fight to protect their country from interference by world powers after the death of King TChalla. View Detail
           </Text>
           <Button mt="33px" bg="#1F1F1F" colorScheme={"#1F1F1F"} 
      color="#FFFFFF"
