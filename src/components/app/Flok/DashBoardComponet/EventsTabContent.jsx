@@ -30,7 +30,7 @@ const EventsTabContent = () => {
        See All
           </Text>
                         </Flex>
-                        <Image w='100%' src='/playvoly.png'></Image>
+                        <Image alt="img" w='100%' src='/playvoly.png'></Image>
                         <Box mt="20px">
                             <Flex justifyContent={"space-between"} mb='20px'>
                             <Text
@@ -140,7 +140,7 @@ const EventsTabContent = () => {
              </Flex>
              <Grid  templateColumns={{ base: "repeat(1, 1fr)",sm:"repeat(2, 1fr)", md: "repeat(2, 1fr)",lg:'repeat(2, 1fr)' }}  w="100%" gap="24px">
                 <Box >
-                    <Image src='/clibed-1.png'></Image>
+                    <Image alt="img" src='/clibed-1.png'></Image>
                     <Box mt='20px'>
                     <Text
             
@@ -164,7 +164,7 @@ const EventsTabContent = () => {
 
                 </Box>
                 <Box >
-                    <Image src='/clibed-2.png'></Image>
+                    <Image alt="img" src='/clibed-2.png'></Image>
                     <Box mt='20px'>
                     <Text
             
@@ -188,7 +188,7 @@ const EventsTabContent = () => {
 
                 </Box>
                 <Box >
-                    <Image src='/clibed-3.png'></Image>
+                    <Image alt="img" src='/clibed-3.png'></Image>
                     <Box mt='20px'>
                     <Text
             
@@ -212,7 +212,7 @@ const EventsTabContent = () => {
 
                 </Box>
                 <Box >
-                    <Image src='/clibed-4.png'></Image>
+                    <Image alt="img" src='/clibed-4.png'></Image>
                     <Box mt='20px'>
                     <Text
             

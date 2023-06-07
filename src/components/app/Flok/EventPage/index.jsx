@@ -50,7 +50,7 @@ const EventMain = () => {
                 <ImageGallery/>
                 <Box mt='40px'>
                     <Flex justifyContent={"space-between"} flexDirection={{base:'column',md:'row'}} gap="10px" pb='30px' borderBottom={"1px solid #DAD9D9"}>
-                        <Box>
+                        <Box textAlign={{base:'center',md:'left'}}>
                         <Text
             mb='16px'
             color="#1F1F1F"
@@ -106,7 +106,7 @@ const EventMain = () => {
    Restrictrions: Ages 7-12
           </Text>
         
-          <Button display={seemore? 'none':'block'}  bg="#1F1F1F" colorScheme={"#1F1F1F"} 
+          <Button mx={{base:'auto',md:'0px'}} display={seemore? 'none':'block'}  bg="#1F1F1F" colorScheme={"#1F1F1F"} 
      color="#FFFFFF"
      fontSize="14px"
      fontWeight="400"

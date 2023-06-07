@@ -17,7 +17,7 @@ const EventsByCategory = () => {
     },
     music: {
       banner: {
-        heading: ' Events',
+        heading: 'Music events',
         image: '/musicmain.png',
       },
       
@@ -102,24 +102,26 @@ const EventsByCategory = () => {
 
 
 
-      <Flex  alignItems={"center"}>
-          <Box w='50%'>
+      <Flex  alignItems={"center"} flexDirection={{base:'column',md:'row'}}>
+          <Box w={{base:'100%',md:'50%'}} mb={{base:'20px',md:'0px'}}>
           <Heading
           color="#FFFFFF"
-          fontSize="64px"
+          fontSize={{base:'36px',md:'40px',lg:'48px',xl:'64px'}}
           fontWeight="600"
+          textAlign={{base:'center',md:'left'}}
           lineHeight={"150%"}>{banner.heading}</Heading>
           <Text
       
       color="#A0A0A0"
       fontSize="20px"
       fontWeight="400"
+      textAlign={{base:'center',md:'left'}}
       lineHeight={"150%"}
     >
  Discover the best Chess events in your area and online
     </Text>
           </Box>
-      <Box w='50%'>
+      <Box w={{base:'100%',md:'50%'}}>
       <Image src={banner.image} alt={banner.heading}  />
       </Box>
     

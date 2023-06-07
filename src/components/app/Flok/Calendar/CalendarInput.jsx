@@ -9,7 +9,7 @@ const CalendarInput = () => {
       <Box>
         <Input
           maxW="500px"
-          width="300px"
+          width={{base:'225px',md:'300px'}}
           
           type="date"
          
