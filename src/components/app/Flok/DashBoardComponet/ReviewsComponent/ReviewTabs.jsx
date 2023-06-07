@@ -7,7 +7,7 @@ const ReviewTabs = ({AnalyticPageReview}) => {
   return (
    <Box>
 <Tabs>
-    <Flex justifyContent={"space-between"} alignItems={"center"} flexDirection={{base:'column',md:'row'}} gap='10px'>
+    <Flex justifyContent={"space-between"} alignItems={"center"} flexDirection={{base:'column',md:'row'}} gap='10px' mb='30px'>
     <Text
             
             color="#191919"
@@ -30,11 +30,13 @@ const ReviewTabs = ({AnalyticPageReview}) => {
         <ReviewTable ReviewData={AnalyticPageReview}/>
       
     </TabPanel>
-    <TabPanel>
-      <p>two!</p>
+    <TabPanel p="0px">
+        <ReviewTable ReviewData={AnalyticPageReview}/>
+      
     </TabPanel>
-    <TabPanel>
-      <p>three!</p>
+    <TabPanel p="0px">
+        <ReviewTable ReviewData={AnalyticPageReview}/>
+      
     </TabPanel>
   </TabPanels>
 </Tabs>

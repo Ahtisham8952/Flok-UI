@@ -1,23 +1,14 @@
-// import { Box } from '@chakra-ui/react'
-// import React from 'react'
-// import DashBoardTabs from './DashBoardTabs'
 
-// const DashboardMain = () => {
-//   return (
-//     <Box >
-//       <DashBoardTabs/>
-
-//     </Box>
-//   )
-// }
-
-// export default DashboardMain
 import React, { useState } from 'react';
 import { Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Flex, Icon, IconButton, Image, Link, Tab, TabList, TabPanel, TabPanels, Tabs, Text, useDisclosure, useMediaQuery } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import DashBoardTablist from './DashBoardTablist';
 import DashboardTabContent from './DashboardTabContent';
 import AnalyticsTabContent from './AnalyticsTabContent';
+import OrderListTabContent from './OrderListTabContent';
+import CustomerListTabContent from './CustomerListTabContent';
+import ReviewCustomerTabContent from './ReviewCustomerTabContent';
+import EventsTabContent from './EventsTabContent';
 
 const DashboardMain = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -147,7 +138,26 @@ const DashboardMain = () => {
                    }
                 
                 
-                   {activeTab === 2 && <p>Sub Tab 3 Content</p>}
+                   {activeTab === 2 && 
+                   <Box>
+                    <OrderListTabContent/>
+                   </Box>
+                   }
+                    {activeTab === 3 && 
+                   <Box>
+                    <CustomerListTabContent/>
+                   </Box>
+                   }
+                    {activeTab === 4 && 
+                   <Box>
+                    <ReviewCustomerTabContent/>
+                   </Box>
+                   }
+                    {activeTab === 5 && 
+                   <Box>
+                    <EventsTabContent/>
+                   </Box>
+                   }
                 
                
             

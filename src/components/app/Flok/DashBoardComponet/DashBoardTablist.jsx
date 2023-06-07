@@ -3,6 +3,9 @@ import React, { useState } from 'react'
 const tabItems = [
     { label: 'Dashboard', image: '/dashfirst.svg', activeImage: '/dahsboardpic-1.svg' },
     { label: 'Analytics', image: '/analytric-1.svg', activeImage: '/analytric-2.svg' },
+    { label: 'Order List',   },
+    { label: 'Customer List',   },
+    { label: 'Review Customer',   },
     { label: 'Events', image: '/eventimg-1.svg', activeImage: '/eventimg-1.svg' },
     { label: 'Message', image: '/messgeimg-1.svg', activeImage: '/messgeimg-1.svg' },
     { label: 'Calender', image: '/calendarimg-1.svg', activeImage: '/calendarimg-1.svg' },

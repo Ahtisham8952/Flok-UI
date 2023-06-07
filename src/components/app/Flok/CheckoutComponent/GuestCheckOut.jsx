@@ -13,13 +13,15 @@ import {
     AccordionPanel,
     Radio,
     Checkbox,
-    Button,
+    Button,Link,
   } from "@chakra-ui/react";
   import React from "react";
 import QuantitySelector from "./quantitySelector";
 import LayoutWrapper from "../../../core/LayoutWrapper/LayoutWrapper";
 import CustomLabelInput from "./CustomLabelInput";
 import CheckoutCardsAccord from "./CheckoutCardsAccord";
+import PurchaseConfirmationModal from "./PurchaseConfirmation";
+
 
   
   const GuestCheckOut = () => {
@@ -295,17 +297,7 @@ import CheckoutCardsAccord from "./CheckoutCardsAccord";
               <Checkbox defaultChecked mt="30px">
                 I agree with our terms and conditions and privacy policy.
               </Checkbox>
-              <Button
-              bg="black"
-              color="white"
-              _hover={{ bg: "black", color: "white" }}
-              fontSize={{ base: "14px", md: "16px", lg: "20px" }}
-             w='100%'
-              mt="50px"
-              mb="500px"
-            >
-              Pay Now
-            </Button>
+             <PurchaseConfirmationModal/>
             </Box>
             
           </Box>

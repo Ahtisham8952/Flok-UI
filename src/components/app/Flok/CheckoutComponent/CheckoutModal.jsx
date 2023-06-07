@@ -44,12 +44,7 @@ export function CheckoutModal() {
             <AdminPurchase />
             
           </ModalBody>
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
-            </Button>
-            <Button variant="ghost"></Button>
-          </ModalFooter>
+          
         </ModalContent>
       </Modal>
     </>
