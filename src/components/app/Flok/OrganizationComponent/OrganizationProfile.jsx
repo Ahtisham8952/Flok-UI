@@ -281,7 +281,7 @@ import TemplateSlider from "./TemplateSlider";
 
     color="#1F1F1F"
     >
-    Organization Page
+   Active Events
 
     </Text>
     <Button as={Link} href="/createevent"  bg="#1F1F1F" colorScheme={"#1F1F1F"} 

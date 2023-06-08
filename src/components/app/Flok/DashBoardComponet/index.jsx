@@ -9,6 +9,7 @@ import OrderListTabContent from './OrderListTabContent';
 import CustomerListTabContent from './CustomerListTabContent';
 import ReviewCustomerTabContent from './ReviewCustomerTabContent';
 import EventsTabContent from './EventsTabContent';
+import BasicSettingsTabContent from './Settings/BasicSettingsTabContent';
 
 const DashboardMain = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -156,6 +157,11 @@ const DashboardMain = () => {
                     {activeTab === 5 && 
                    <Box>
                     <EventsTabContent/>
+                   </Box>
+                   }
+                    {activeTab === 10 && 
+                   <Box>
+                    <BasicSettingsTabContent/>
                    </Box>
                    }
                 

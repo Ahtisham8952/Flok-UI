@@ -11,6 +11,7 @@ const tabItems = [
     { label: 'Calender', image: '/calendarimg-1.svg', activeImage: '/calendarimg-1.svg' },
     { label: 'Email', image: '/emailpic.svg', activeImage: '/emailpic.svg' },
     { label: 'Settings', image: '/seetingpic.svg', activeImage: '/seetingpic.svg' },
+    { label: 'Settings Basic',  },
     { label: 'Logout', image: '/lohoutpic.svg', activeImage: '/lohoutpic.svg' }
   ];
 const DashBoardTablist = () => {
