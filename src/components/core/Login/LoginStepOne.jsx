@@ -31,7 +31,7 @@ const LoginPage = ({nextPage}) => {
       const accountType = localStorage.getItem('accountType');
       console.log(accountType)
       if (accountType === 'parent') {
-        router.push('/');
+        router.push('/parentlogin');
       } else if (accountType === 'organization') {
         router.push('/organizationlogin');
       }
