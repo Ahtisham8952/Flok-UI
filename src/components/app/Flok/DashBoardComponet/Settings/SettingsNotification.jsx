@@ -99,7 +99,7 @@ fontSize="12px"
 fontWeight="500"
 lineHeight={"16px"}
 >
-Help remind me of movies that have been booked so customers don't forget.
+Help remind me of movies that have been booked so customers dont forget.
 </Text>
 </Box>
 <Box>

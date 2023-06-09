@@ -260,7 +260,7 @@ Please contact us for further inquiries
         backgroundSize="cover"
         backgroundPosition="center"
         backgroundRepeat="no-repeat" px="10px"  h='247px' maxW={"250px"} mx='auto' borderRadius={"10px"} display={"flex"} justifyContent={"center"} alignItems={"center"}>
-          <Image src='/questionmark.svg' position={"absolute"} top='-56px'></Image>
+          <Image alt="img" src='/questionmark.svg' position={"absolute"} top='-56px'></Image>
         <Box>
         <Text
             
