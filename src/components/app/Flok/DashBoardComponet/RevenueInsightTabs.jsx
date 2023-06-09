@@ -7,7 +7,7 @@ const RevenueInsightTabs = () => {
    <Box>
     <Tabs>
         <Flex justifyContent={"center"}>
-        <TabList bg="#E7E7E7" borderRadius={"42px"} overflow={'hidden'} flexDirection={{base:'column',md:'row'}} w="100%">
+        <TabList bg="#E7E7E7" borderRadius={"42px"} overflow={'hidden'} flexDirection={{base:'column',md:'row'}} w={{base:'100%',lg:'394px'}}>
     <Tab py="10px " color="#2E2E2E" px="20px" _selected={{bg:'#1F1F1F',color:'#FFFFFF'}} borderRadius={"58px"}>Daily</Tab>
     <Tab py="10px " px="20px" color="#2E2E2E" _selected={{bg:'#1F1F1F',color:'#FFFFFF'}} borderRadius={"58px"}>Weekly</Tab>
     <Tab py="10px " px="20px" color="#2E2E2E" _selected={{bg:'#1F1F1F',color:'#FFFFFF'}} borderRadius={"58px"}>Monthly</Tab>

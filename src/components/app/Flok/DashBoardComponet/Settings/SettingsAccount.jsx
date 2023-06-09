@@ -4,7 +4,7 @@ import DashBoardHeader from '../DashBoardHeader'
 import CustomLabelInput from "../../CheckoutComponent/CustomLabelInput"
 
 import CountryDropdown from './MenuDropdown'
-const BasicSettingsTabContent = () => {
+const SettingsAccount = () => {
   return (
    <Box>
     <DashBoardHeader/>
@@ -39,7 +39,7 @@ const BasicSettingsTabContent = () => {
         </Box>
         <Flex justifyContent={"space-between"} alignItems={"flex-end"} mb='37px'>
         <Box w={{base:'85%',md:'65%'}}>
-            <CustomLabelInput Label="Display Name"/>
+            <CustomLabelInput Label="Email"/>
         </Box>
         <Box cursor={"pointer"}>
             <Image src="/editimgicon.svg"></Image>
@@ -47,33 +47,26 @@ const BasicSettingsTabContent = () => {
         </Flex>
         <Flex justifyContent={"space-between"} alignItems={"flex-end"} mb='37px'>
         <Box w={{base:'85%',md:'65%'}}>
-            <CustomLabelInput Label="Email"/>
+            <CustomLabelInput Label="Old Password"/>
         </Box>
         <Box cursor={"pointer"}>
-            <Image src="/editimgicon.svg"></Image>
+            <Image src="/closeeyes.svg"></Image>
         </Box>
         </Flex>
-        <Flex justifyContent={"space-between"} maxW={"1250px"} gap='10px' flexDirection={{base:'column',md:'row'}} mb='38px'>
-            <CountryDropdown LabelName="Country"/> 
-            <CountryDropdown LabelName="City"/>
-            <CountryDropdown LabelName="Province"/>
-        </Flex>
-        <Flex justifyContent={"space-between"} alignItems={"flex-end"} mb='60px'>
+        <Flex justifyContent={"space-between"} alignItems={"flex-end"} mb='37px'>
         <Box w={{base:'85%',md:'65%'}}>
-        <Text
-            
-            color="#191919"
-            fontSize="14px"
-            fontWeight="600"
-            lineHeight={"150%"}
-            mb="8px"
-          >
-       Bio
-          </Text>
-           <Textarea resize={"none"} h="206px"/>
+            <CustomLabelInput Label="New Password"/>
         </Box>
         <Box cursor={"pointer"}>
-            <Image src="/editimgicon.svg"></Image>
+            <Image src="/closeeyes.svg"></Image>
+        </Box>
+        </Flex>
+        <Flex justifyContent={"space-between"} alignItems={"flex-end"} mb='37px'>
+        <Box w={{base:'85%',md:'65%'}}>
+            <CustomLabelInput Label="Confirmation new Password"/>
+        </Box>
+        <Box cursor={"pointer"}>
+            <Image src="/closeeyes.svg"></Image>
         </Box>
         </Flex>
         <Button bg="#1F1F1F" colorScheme={"#1F1F1F"} 
@@ -96,4 +89,4 @@ const BasicSettingsTabContent = () => {
   )
 }
 
-export default BasicSettingsTabContent
+export default SettingsAccount
