@@ -178,7 +178,7 @@ Please contact us for further inquiries
      mt="20px"
      
      >
-        Upgrade
+         Go To Help Center
      </Button>
           </Flex>
          
@@ -295,7 +295,7 @@ Please contact us for further inquiries
      mt="20px"
      
      >
-        Upgrade
+       Go To Help Center
      </Button>
           </Flex>
          

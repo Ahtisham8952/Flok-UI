@@ -52,7 +52,7 @@ const AnalyticsTabContent = () => {
             fontWeight="600"
             lineHeight={"150%"}
           >
-      Popular Movies
+      Popular Events
           </Text>
             <AnalyticCard/>
             <Box mt="30px">
@@ -69,7 +69,7 @@ const AnalyticsTabContent = () => {
             fontWeight="600"
             lineHeight={"150%"}
           >
-      Other Movies
+      Other Events
           </Text>
           <Text
            

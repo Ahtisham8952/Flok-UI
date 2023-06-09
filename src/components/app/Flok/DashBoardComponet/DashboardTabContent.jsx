@@ -7,23 +7,23 @@ import DashBoardHeader from './DashBoardHeader'
 import SalesInsight from './SalesInsight'
 const EventsDetail=[
     {
-        Image:'/vakanda.svg',
-        Title:'Black Panther : Wakanda Forever',
-        genre:'Action • 161 mins',
+        Image:'/eventolist.svg',
+        Title:'Event Title',
+        genre:'Lorem Ipsum is simply dummy.',
 
 
     },
     {
-        Image:'/vakanda.svg',
-        Title:'Black Panther : Wakanda Forever',
-        genre:'Action • 161 mins',
+        Image:'/eventolist.svg',
+        Title:'Event Title',
+        genre:'Lorem Ipsum is simply dummy.',
 
 
     },
     {
-        Image:'/vakanda.svg',
-        Title:'Black Panther : Wakanda Forever',
-        genre:'Action • 161 mins',
+        Image:'/eventolist.svg',
+        Title:'Event Title',
+        genre:'Lorem Ipsum is simply dummy.',
 
 
     },
@@ -97,6 +97,17 @@ const DashboardTabContent = () => {
         </Box>
         <Box w={{base:'100%',xxl:'30%'}}>
 <Box border={"1px solid #E7E7E7"} py="24px" px='22px' borderRadius={"10px"}>
+<Text
+            
+            color="#191919"
+            fontSize="20px"
+            fontWeight="700"
+            textAlign={"center"}
+            lineHeight={"150%"}
+            mb='20px'
+          >
+      Upcoming Events
+          </Text>
     <Box>
         <CalendarSlider/>
     </Box>

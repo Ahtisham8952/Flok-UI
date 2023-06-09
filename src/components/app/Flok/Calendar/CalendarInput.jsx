@@ -5,7 +5,7 @@ import ReactDatePicker from 'react-datepicker';
 const CalendarInput = () => {
     const [startDate, setStartDate] = useState(new Date());
     return (
-      <Flex justify="center" mt="77px">
+      <Flex justify="center" >
       <Box>
         <Input
           maxW="500px"

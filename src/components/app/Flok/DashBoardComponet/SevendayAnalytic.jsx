@@ -39,7 +39,7 @@ const SevendayAnalytic = () => {
        {li.Name}
           </Text>
           <Flex>
-            <Image alt='img' src={li.revimg}></Image>
+           
           <Text
             
             color="#191919"

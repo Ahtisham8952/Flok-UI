@@ -14,7 +14,7 @@ import {
 const RevenueData=[
     {
 ID:'#123456',
-event:'Justice League : Black Adam',
+event:'Events Name',
 Customer:'Daniel Alveson',
 pcs:'1 pcs',
 
@@ -22,7 +22,7 @@ pcs:'1 pcs',
     },
     {
         ID:'#234567',
-        event:'Black Panther : Wakanda Forever',
+        event:'Events Name',
         Customer:'Kevin Jonson',
         pcs:'3 pcs',
         
@@ -30,7 +30,7 @@ pcs:'1 pcs',
             },
             {
                 ID:'#234567',
-                event:'Avatar : The Way of Water',
+                event:'Events Name',
                 Customer:'Daniel Alveson',
                 pcs:'1 pcs',
                 
@@ -38,7 +38,7 @@ pcs:'1 pcs',
                     },
                     {
                         ID:'#234567',
-                        event:'KKN di Desa Penari : Uncut Version',
+                        event:'Events Name',
                         Customer:'Daniel Alveson',
                         pcs:'1 pcs',
                         
@@ -46,7 +46,7 @@ pcs:'1 pcs',
                             },
                             {
                                 ID:'#234567',
-                                event:'Puss in Boots : The Last Wish',
+                                event:'Events Name',
                                 Customer:'Daniel Alveson',
                                 pcs:'1 pcs',
                                 
