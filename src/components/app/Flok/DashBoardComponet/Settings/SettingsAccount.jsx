@@ -42,7 +42,7 @@ const SettingsAccount = () => {
             <CustomLabelInput Label="Email"/>
         </Box>
         <Box cursor={"pointer"}>
-            <Image src="/editimgicon.svg"></Image>
+            <Image alt="img" src="/editimgicon.svg"></Image>
         </Box>
         </Flex>
         <Flex justifyContent={"space-between"} alignItems={"flex-end"} mb='37px'>
@@ -50,7 +50,7 @@ const SettingsAccount = () => {
             <CustomLabelInput Label="Old Password"/>
         </Box>
         <Box cursor={"pointer"}>
-            <Image src="/closeeyes.svg"></Image>
+            <Image alt="img" src="/closeeyes.svg"></Image>
         </Box>
         </Flex>
         <Flex justifyContent={"space-between"} alignItems={"flex-end"} mb='37px'>
@@ -58,7 +58,7 @@ const SettingsAccount = () => {
             <CustomLabelInput Label="New Password"/>
         </Box>
         <Box cursor={"pointer"}>
-            <Image src="/closeeyes.svg"></Image>
+            <Image alt="img" src="/closeeyes.svg"></Image>
         </Box>
         </Flex>
         <Flex justifyContent={"space-between"} alignItems={"flex-end"} mb='37px'>
@@ -66,7 +66,7 @@ const SettingsAccount = () => {
             <CustomLabelInput Label="Confirmation new Password"/>
         </Box>
         <Box cursor={"pointer"}>
-            <Image src="/closeeyes.svg"></Image>
+            <Image alt="img" src="/closeeyes.svg"></Image>
         </Box>
         </Flex>
         <Button bg="#1F1F1F" colorScheme={"#1F1F1F"} 

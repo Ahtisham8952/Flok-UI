@@ -31,7 +31,7 @@ const BasicSettingsTabContent = () => {
           </Text>
         </Box>
         <Box mb='38px' >
-            <Image h='322px' alt="img" src="/profilebanner.png" />
+            <Image alt="img" h='322px'  src="/profilebanner.png" />
          <Box h={{base:'120px',md:'214px'}} w={{base:'120px',md:'214px'}} mx='auto' mt={{base:'-50px',md:'-100px'}} display={"flex"} justifyContent={"center"}>
          <Image alt="img" src="/profiledisplay.png" />
          </Box>
@@ -42,7 +42,7 @@ const BasicSettingsTabContent = () => {
             <CustomLabelInput Label="Display Name"/>
         </Box>
         <Box cursor={"pointer"}>
-            <Image src="/editimgicon.svg"></Image>
+            <Image alt="img" src="/editimgicon.svg"></Image>
         </Box>
         </Flex>
         <Flex justifyContent={"space-between"} alignItems={"flex-end"} mb='37px'>
@@ -50,7 +50,7 @@ const BasicSettingsTabContent = () => {
             <CustomLabelInput Label="Email"/>
         </Box>
         <Box cursor={"pointer"}>
-            <Image src="/editimgicon.svg"></Image>
+            <Image alt="img" src="/editimgicon.svg"></Image>
         </Box>
         </Flex>
         <Flex justifyContent={"space-between"} maxW={"1250px"} gap='10px' flexDirection={{base:'column',md:'row'}} mb='38px'>
@@ -73,7 +73,7 @@ const BasicSettingsTabContent = () => {
            <Textarea resize={"none"} h="206px"/>
         </Box>
         <Box cursor={"pointer"}>
-            <Image src="/editimgicon.svg"></Image>
+            <Image alt="img" src="/editimgicon.svg"></Image>
         </Box>
         </Flex>
         <Button bg="#1F1F1F" colorScheme={"#1F1F1F"} 

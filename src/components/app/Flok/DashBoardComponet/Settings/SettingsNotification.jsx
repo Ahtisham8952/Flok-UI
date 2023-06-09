@@ -121,7 +121,7 @@ Help remind me of movies that have been booked so customers don't forget.
           >
       Notification Message
           </Text>
-          <Image src="/infosicon.svg"></Image>
+          <Image alt="img" src="/infosicon.svg"></Image>
             </Flex>
             <Flex justifyContent={"space-between"} w="100%" mb='26px'>
 
@@ -192,7 +192,7 @@ Helps provide a marker that there is a new email for the customer.
           >
       Notification Payment
           </Text>
-          <Image src="/infosicon.svg"></Image>
+          <Image alt="img" src="/infosicon.svg"></Image>
             </Flex>
             <Flex justifyContent={"space-between"} w="100%" mb='26px'>
 
