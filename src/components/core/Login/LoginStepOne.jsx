@@ -81,7 +81,7 @@ const LoginPage = () => {
           router.push('/organizationlogin');
         } else {
           
-          router.push('/parentlogin');
+          router.push('/organizationlogin');
         }
       } else {
         

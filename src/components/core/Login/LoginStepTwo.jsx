@@ -11,7 +11,7 @@ import {
   } from "@chakra-ui/react";
   import React from "react";
 
-  import { Cards } from "../Login/Cards";
+  import {  ChildrenInfoCard } from "./ChildrenInfoCard";
   import { Cardcontact } from "../Login/Cardcontact";
 import LayoutWrapper from "../LayoutWrapper/LayoutWrapper";
   
@@ -153,8 +153,8 @@ import LayoutWrapper from "../LayoutWrapper/LayoutWrapper";
           gap={{ base: "3", md: "3", lg: "5" }}
           justifyContent="center"
         >
-          <Cards />
-          <Cards />
+          <ChildrenInfoCard />
+          <ChildrenInfoCard />
         </Box>
         <Box
           bg="#1F1F1F"

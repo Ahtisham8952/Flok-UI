@@ -17,7 +17,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
-export const Cards = () => {
+export const ChildrenInfoCard = () => {
   return (
     <Box
       bgColor="#E0E0E0"

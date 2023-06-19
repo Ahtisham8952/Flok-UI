@@ -56,6 +56,9 @@ export const OrganizationloginStepOne = ({nextStep}) => {
           <ListItem>Facilisis in pretium nisl aliquet</ListItem>
         </UnorderedList>
       </Box>
+      <form>
+
+      
       <Box display="flex" justifyContent="center" mt="15px">
         <Box
           bgColor="#E0E0E0"
@@ -79,8 +82,8 @@ export const OrganizationloginStepOne = ({nextStep}) => {
               p={{ base: "8px", md: "8px", lg: "10px" }}
               borderRadius="35"
             >
-              <Image alt="img" src="calendar.svg" pl="15px" />
-              <Input _focusVisible={{border:'none'}} type="Text" placeholder="Date" border="none" />
+              <Image alt="img" src="mailboxz.svg" pl="15px" />
+              <Input type="email"  _focusVisible={{border:'none'}}  placeholder="Email" border="none" />
             </InputGroup>
           </FormControl>
           <Text
@@ -93,9 +96,9 @@ export const OrganizationloginStepOne = ({nextStep}) => {
             Options
           </Text>
           <Box mt="15px">
-            <Stack gap={{ base: "2px", md: "2px", lg: "5px" }}>
+            <Stack gap={{ base: "2px", md: "2px", lg: "30px" }}>
               <Checkbox _focusVisible={{borderColor:'black'}} size="md"  defaultChecked borderColor={"black"}>
-                Primary contact
+              Show email
               </Checkbox>
               <Checkbox size="md"  borderColor={"black"} >
               Personal name is organization name
@@ -127,12 +130,14 @@ export const OrganizationloginStepOne = ({nextStep}) => {
      borderRadius={"50px"}
      border="1px solid white"
      onClick={nextStep}
+    
      >
     Save Contact Prefernces
      </Button>
           </Box>
         </Box>
       </Box>
+      </form>
     </Box>
     
   );
