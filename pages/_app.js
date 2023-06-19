@@ -4,29 +4,31 @@ import { ChakraProvider } from '@chakra-ui/react'
 
 import "@fontsource/rajdhani"
 
-import LayoutWrapper from '../src/components/core/LayoutWrapper/LayoutWrapper'
+
 
 
 
 
 import { mynewtheme } from '../src/theme'
-import LandingPage from '../src/components/app/Flok/LandingPage/Index'
-import EventMain from '../src/components/app/Flok/EventPage'
 
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+
+import { useState } from 'react'
+
+const queryClient = new QueryClient()
 function Flok({ Component, pageProps }) {
+
   return (
     <ChakraProvider resetCSS theme={mynewtheme}>
-     
-       
-     
-
-     
+      <QueryClientProvider client={queryClient}>
         <Component {...pageProps} />
-       
-     
+
+
+      </QueryClientProvider>
     </ChakraProvider>
-    
-  
+
+
   )
 }
 

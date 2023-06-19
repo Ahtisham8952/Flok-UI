@@ -1,61 +1,113 @@
-import { Box, Checkbox,Text, FormControl, FormLabel, Heading, Input, ListItem, Radio, Stack, UnorderedList, RadioGroup, Button, Link, Flex } from '@chakra-ui/react'
-import React, { useState } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import LayoutWrapper from '../LayoutWrapper/LayoutWrapper'
-import { useFormik } from 'formik';
-import { VStack, FormErrorMessage } from '@chakra-ui/react';
-import { useHistory } from 'react-router-dom';
-
-import * as yup from 'yup';
+import { useState } from 'react';
+import {
+  Box,
+  Button,
+  Checkbox,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Heading,
+  Input,
+  ListItem,
+  Radio,
+  RadioGroup,
+  Stack,
+  Text,
+  UnorderedList,
+  VStack,
+  Link,
+} from '@chakra-ui/react';
+import LayoutWrapper from "../LayoutWrapper/LayoutWrapper"
 import { useRouter } from 'next/router';
-const validationSchema = yup.object().shape({
-  name: yup.string().required('Name is required'),
-  email: yup.string().email('Invalid email').required('Email is required'),
-  password: yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
-  accountType: yup.string().required('Account Type is required'),
-  agreeTerms: yup.boolean().oneOf([true], 'You must agree to the terms and conditions').required('You must agree to the terms and conditions'),
-});
-const Registration = () => {
-  const router = useRouter()
-  const [accountType, setAccountType] = useState('');
+import ApiCaller from '../../../ApiCaller';
 
-  const initialValues = {
-    name: '',
-    email: '',
-    password: '',
-    accountType: '',
-    emailNotifications: false,
-    instantNotifications: false,
-  };
 
-  const handleSubmit = (values) => {
-    if (values.agreeTerms) {
-      console.log(values);
-      localStorage.setItem('accountType',values.accountType);
-      router.push('/login');
+
+const FormComponent = () => {
+  const { callApi } = ApiCaller();
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [userType, setUserType] = useState('');
+  const [accountType, setAccountType] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [errors, setErrors] = useState({});
+  const router = useRouter();
+  const validateForm = () => {
+   
+    const errors = {};
+
+    if (!email) {
+      errors.email = 'Email is required';
     }
+
+    if (!name) {
+      errors.name = 'Name is required';
+    }
+
+    if (!password) {
+      errors.password = 'Password is required';
+    }
+
+    if (!confirmPassword) {
+      errors.confirmPassword = 'Confirm Password is required';
+    }
+
+    if (password !== confirmPassword) {
+      errors.confirmPassword = 'Passwords do not match';
+    }
+
+    if (!userType) {
+      errors.userType = 'User Type is required';
+    }
+
+    setErrors(errors);
+
+    return Object.keys(errors).length === 0;
   };
 
-  const formik = useFormik({
-    initialValues,
-    validationSchema,
-    onSubmit: handleSubmit,
-  });
-  const handleAccountTypeChange = (value) => {
-    formik.setFieldValue('accountType', value);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const isValid = validateForm();
+
+    if (!isValid) {
+      return;
+    }
     
-  };
-  const handleAgreeTermsChange = (event) => {
-    formik.setFieldValue('agreeTerms', event.target.checked);
-  };
-  return ( 
-    <LayoutWrapper>
 
-    <Box maxW={"1560px" } w='100%' px='20px' mx='auto'>
+    setSubmitting(true);
 
-    
-    <Box py='32px'>
-    <Heading
+    const mutation = await callApi(`
+      mutation RegisterUser {
+        registerUser(
+          registerUserInput: {
+            email: "${email}",
+            name: "${name}",
+            password: "${password}",
+            confirmPassword: "${confirmPassword}",
+            userType: ${userType === 'PARENT' ? 'PARENT' : userType === 'ADMIN' ? 'ADMIN' : 'PROVIDER'}
+          }
+        ) {
+          email
+          name
+        }
+      }
+    `);
+
+    console.log(mutation);
+
+    setSubmitting(false);
+    router.push('/login');
+  };
+
+  return (
+    <>
+     <LayoutWrapper>
+     <Box maxW={"1560px" } w='100%' px='20px' mx='auto'>
+<Box py='32px'>
+<Heading
       as="h2"
       fontSize="48px"
       fontWeight="700px"
@@ -84,49 +136,80 @@ const Registration = () => {
         <ListItem>Facilisis in pretium nisl aliquet</ListItem>
       </UnorderedList>
     </Box>
+
+
     
-    <form>
-        <Box>
+    <form onSubmit={handleSubmit}>
+      <VStack spacing={4} align="stretch">
+      <FormControl isInvalid={errors.name}>
+          <FormLabel fontWeight={'700'} htmlFor="name">Name</FormLabel>
+          <Input
+            id="name"
+            name="name"
+            type="text"
+            autoComplete="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            fontSize="14px"h={{base:'45px',xl:'60px',xxl:'60px',xxxl:'90px'}} bg="white" borderRadius="5px"
+            fontWeight="400"
+           
+            lineHeight={"150%"}
+          />
+          <FormErrorMessage>{errors.name}</FormErrorMessage>
+        </FormControl>
+        <FormControl isInvalid={errors.email}>
+          <FormLabel fontWeight={'700'} htmlFor="email">Email</FormLabel>
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            fontSize="14px"h={{base:'45px',xl:'60px',xxl:'60px',xxxl:'90px'}} bg="white" borderRadius="5px"
+            fontWeight="400"
             
-    <Box maxW={ "852px" } pt="40px" display={"flex"} flexDirection={"column"} gap='20px'>
-       
-            
+            lineHeight={"150%"}
+          />
+          <FormErrorMessage>{errors.email}</FormErrorMessage>
+        </FormControl>
+
         
-    <FormControl  id="name" isInvalid={formik.errors.name && formik.touched.name}>
-        <FormLabel fontWeight={'700'}>NAME </FormLabel>
-        
-      
-            <Input fontSize="14px"h={{base:'45px',xl:'60px',xxl:'60px',xxxl:'90px'}} bg="white" borderRadius="5px"
+
+        <FormControl isInvalid={errors.password}>
+          <FormLabel fontWeight={'700'} htmlFor="password">Password</FormLabel>
+          <Input
+          fontSize="14px"h={{base:'45px',xl:'60px',xxl:'60px',xxxl:'90px'}} bg="white" borderRadius="5px"
+          fontWeight="400"
+         
+          lineHeight={"150%"}
+            id="password"
+            name="password"
+            type="password"
+            autoComplete="new-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <FormErrorMessage>{errors.password}</FormErrorMessage>
+        </FormControl>
+
+        <FormControl isInvalid={errors.confirmPassword}>
+          <FormLabel fontWeight={'700'} htmlFor="confirmPassword">Confirm Password</FormLabel>
+          <Input
+            id="confirmPassword"
+            name="confirmPassword"
+            type="password"
+            fontSize="14px"h={{base:'45px',xl:'60px',xxl:'60px',xxxl:'90px'}} bg="white" borderRadius="5px"
             fontWeight="400"
-            type='text'
-            lineHeight={"150%"}   {...formik.getFieldProps('name')} placeholder='Enter Username'  border="none" _focusVisible={{border:'none'}}/>
-           <FormErrorMessage>{formik.errors.name}</FormErrorMessage>
-       
-      </FormControl>
-      <FormControl id="email" isInvalid={formik.errors.email && formik.touched.email} >
-        <FormLabel fontWeight={'700'}>Email </FormLabel>
-        
-        
-             <Input fontSize="14px"
-            fontWeight="400"
-            type='email'
-            lineHeight={"150%"} h={{base:'45px',xl:'60px',xxl:'60px',xxxl:'90px'}} bg="white" borderRadius="5px" placeholder='Enter Your Email'  {...formik.getFieldProps('email')} border="none" _focusVisible={{border:'none'}}  />
-         <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
-       
-      </FormControl>
-      <FormControl  id="password" isInvalid={formik.errors.password && formik.touched.password} >
-        <FormLabel fontWeight={'700'}>password </FormLabel>
-       
-        
-            <Input fontSize="14px"
-            fontWeight="400"
-            type='password'
-            lineHeight={"150%"} h={{base:'45px',xl:'60px',xxl:'60px',xxxl:'90px'}} bg="white" borderRadius="5px" placeholder='Enter Your Password'  {...formik.getFieldProps('password')} border="none" _focusVisible={{border:'none'}} />
-          <FormErrorMessage>{formik.errors.password}</FormErrorMessage>
-        
-      </FormControl>
-    </Box>
-    <Box width="40%" pt="5px">
+           
+            lineHeight={"150%"}
+            autoComplete="new-password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+          <FormErrorMessage>{errors.confirmPassword}</FormErrorMessage>
+        </FormControl>
+        <Box width="40%" pt="5px">
       <Heading
         as="h2"
         fontSize={{base:'20px',md:'24px'}}
@@ -138,28 +221,25 @@ const Registration = () => {
       >
         Account type{" "}
       </Heading>
-      <Stack>
-      <FormControl
-        id="accountType"
-        isInvalid={formik.errors.accountType && formik.touched.accountType}
-      >
-        <FormLabel>Account Type</FormLabel>
-        <RadioGroup
-          value={formik.values.accountType}
-          onChange={handleAccountTypeChange }
-          onBlur={formik.handleBlur('accountType')}
-        >
-          <VStack spacing={2} alignItems="flex-start">
-            <Radio value="parent">Parent</Radio>
-            <Radio value="organization">Organization</Radio>
-          </VStack>
-        </RadioGroup>
-        <FormErrorMessage>{formik.errors.accountType}</FormErrorMessage>
-      </FormControl>
-        
-      </Stack>
-    </Box>
-    <Box width="40%" pt="5px">
+      <FormControl isInvalid={errors.userType}>
+         
+          <RadioGroup
+            id="userType"
+            name="userType"
+            value={userType}
+            onChange={(value) => setUserType(value)}
+          >
+            <VStack spacing={2} alignItems={"left"} >
+              <Radio value="PARENT">Parent</Radio>
+              {/* <Radio value="ADMIN">Admin</Radio> */}
+              <Radio value="PROVIDER">Event provider / Organaization</Radio>
+            </VStack>
+          </RadioGroup>
+          <FormErrorMessage>{errors.userType}</FormErrorMessage>
+        </FormControl>
+
+      </Box>
+      <Box width="40%" pt="5px">
       <Heading
         as="h2"
         fontSize={{base:'20px',md:'24px'}}
@@ -193,62 +273,38 @@ const Registration = () => {
         
         Terms and Conditions:
       </Heading>
-      {/* <Flex gap='5px ' flexDirection={{base:'column',md:'row'}}>
-      <Stack>
-        <Checkbox 
-        defaultChecked >
-        I agree to the Privacy & 
-        </Checkbox>
-        
-      </Stack>
-      <Link href='/terms' textDecoration={"underline"}> Terms and Conditions</Link>
-      </Flex> */}
-       {/* <FormControl
-        isInvalid={formik.errors.agreeTerms && formik.touched.agreeTerms}
-      >
-        <Checkbox
-          id="agreeTerms"
-          isChecked={formik.values.agreeTerms}
-          onChange={handleAgreeTermsChange}
-        >
-          I agree to the Privacy &  <Link href='/terms' textDecoration={"underline"}> Terms and Conditions</Link>
-        </Checkbox>
-        <FormErrorMessage>{formik.errors.agreeTerms}</FormErrorMessage>
-      </FormControl> */}
+      
         <FormControl
-        isInvalid={formik.errors.agreeTerms && formik.touched.agreeTerms}
+      
       >
         <Checkbox
-          id="agreeTerms"
-          isChecked={formik.values.agreeTerms}
-          onChange={handleAgreeTermsChange}
+          defaultChecked
         >
           I agree to the Privacy &  <Link href='/terms' textDecoration={"underline"}> Terms and Conditions</Link>
         </Checkbox>
-        <FormErrorMessage>{formik.errors.agreeTerms}</FormErrorMessage>
+       
       </FormControl>
 
-      {formik.errors.agreeTerms && !formik.touched.agreeTerms && (
-        <Box color="red" mt={2}>
-          {formik.errors.agreeTerms}
-        </Box>
-      )}
+      
      
     </Box>
-    <Button mt='30px' type="submit" bg="#1F1F1F" colorScheme={"#1F1F1F"} 
+        
+
+        
+         <Button alignItems={'center'} mt='30px'  bg="#1F1F1F" colorScheme={"#1F1F1F"} 
      color="#FFFFFF"
      fontSize="14px"
+     maxW={"200px"}
      fontWeight="400"
      lineHeight={"150%"}
      p="8px 40px"
      borderRadius={"50px"}
      border="1px solid white"
-     onClick={formik.handleSubmit}
+     type="submit" isLoading={submitting} loadingText="Submitting"
      >
      Signup
      </Button>
-    </Box>
-
+      </VStack>
     </form>
     <Text
     mt='20px'
@@ -271,11 +327,11 @@ const Registration = () => {
         Login
        </Link>
           </Text>
-  </Box>
-  </Box>
-  </LayoutWrapper>
-  )
-}
+    </Box>
+    </Box>
+    </LayoutWrapper>
+    </>
+  );
+};
 
-export default Registration
-
+export default FormComponent;

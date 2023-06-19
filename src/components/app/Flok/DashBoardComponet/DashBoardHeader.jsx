@@ -3,7 +3,7 @@ import React from 'react'
 
 const DashBoardHeader = () => {
   return (
-    <Box px={{base:'10px',xxxl:'69px'}} py={{base:'60px',lg:'21px'}} borderBottom={"1px solid #E7E7E7"}>
+    <Box bg="#1F1F1F" px={{base:'10px',xxxl:'69px'}} py={{base:'60px',lg:'21px'}} borderBottom={"1px solid #E7E7E7"}>
     <Flex justifyContent={"space-between"} alignItems={{base:'flex-start',md:'center'}} flexDirection={{base:'column',md:'row'}} gap='10px' >
         <Box w='100%' maxW={{base:'285px',lg:'385px'}} h='66px' gap='33px' borderRadius={"10px"} border="1px solid #E7E7E7" bg="transparent" py="23px" pl='23px' pr='23px' display={"flex"} alignItems={"center"}>
             <Image alt="img" src='/searchions.svg'></Image>

@@ -1,42 +1,98 @@
-import { Box, Flex,Link, Heading, Text, Grid, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
-import React, { useState } from "react";
-
+import { useState } from 'react';
+import {
+  Box,
+  Button,
+  Checkbox,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Heading,
+  Input,
+  Flex,
+  ListItem,
+  Radio,
+  RadioGroup,
+  Stack,
+  Text,
+  UnorderedList,
+  VStack,
+  Link,
+  
+} from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 import LayoutWrapper from "../LayoutWrapper/LayoutWrapper"
+import ApiCaller from '../../../ApiCaller';
+const LoginPage = () => {
+  const { callApi } = ApiCaller();
+  const router = useRouter();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [id, setid] = useState('');
+  const [error, setError] = useState('');
 
-import * as Yup from 'yup';
+  // const callApi = async (value) => {
+  //   try {
+  //     const response = await fetch('http://localhost:3000/graphql/', {
+  //       method: 'POST',
+  //       body: JSON.stringify({ query: value }),
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'Accept': 'application/json',
+  //         'Authorization': `Bearer TOKEN_HERE`
+  //       },
+  //     });
+  //     return await response.json();
+  //   } catch (error) {
+  //     console.error('API error:', error);
+  //     throw new Error('An error occurred during the API call');
+  //   }
+  // };
 
-import { useHistory } from 'react-router-dom';
-import { useFormik } from "formik";
-import { useRouter } from "next/router";
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
+    try {
+      const value = `
+        query LoginUser {
+          loginUser(
+            loginUserInput: {
+              email: "${email}",
+              password: "${password}"
+            }
+          ) {
+            email
+            name
+            
+            
+          }
+        }
+      `;
 
-const LoginPage = ({nextPage}) => {
-  const router = useRouter()
+      const response = await callApi(value);
 
-  const validationSchema = Yup.object().shape({
-    email: Yup.string().email('Invalid email').required('Email is required'),
-    password: Yup.string().required('Password is required'),
-  });
+      if (response && response.data && response.data.loginUser) {
+        const { userType } = response.data.loginUser;
 
-  const formik = useFormik({
-    initialValues: {
-      email: '',
-      password: '',
-    },
-    validationSchema: validationSchema,
-    onSubmit: (values) => {
-     
-      console.log(values);
-     
-      const accountType = localStorage.getItem('accountType');
-      console.log(accountType)
-      if (accountType === 'parent') {
-        router.push('/parentlogin');
-      } else if (accountType === 'organization') {
-        router.push('/organizationlogin');
+        if (userType === 'PARENT') {
+        
+          router.push('/parentlogin');
+        } else if (userType === 'PROVIDER') {
+          
+          router.push('/organizationlogin');
+        } else {
+          
+          router.push('/parentlogin');
+        }
+      } else {
+        
+        setError('Invalid email or password');
       }
-    },
-  });
+    } catch (error) {
+      console.error('Login error:', error);
+      setError('An error occurred during login');
+    }
+  };
+
   return (
     <LayoutWrapper>
 <Box maxW={"1760px"} w='100%' px='20px' mx={"auto"} >
@@ -50,7 +106,6 @@ const LoginPage = ({nextPage}) => {
         fontWeight="700px"
         lineHeight="58px"
         textAlign="center"
-       
       >
         Login
       </Heading>
@@ -82,7 +137,7 @@ const LoginPage = ({nextPage}) => {
       </Text>
 
       <Box>
-        <form onSubmit={formik.handleSubmit}>
+        <form onSubmit={handleSubmit} >
           <Flex display={"flex" } gap={{base:'30px',md:'75px'}} maxW={"1450px"} w='100%' mt='75px' flexDirection={{base:'column',md:'row'}}>
         
       <FormControl>
@@ -93,12 +148,10 @@ const LoginPage = ({nextPage}) => {
             fontWeight="300"
             id="email"
             type="email"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
+            value={email} onChange={(e) => setEmail(e.target.value)}
             lineHeight={"150%"} h='100%' placeholder='Enter you Username' border="none" _focusVisible={{border:'none'}}  />
         </Box>
-        {formik.touched.email && formik.errors.email && <Box color="red">{formik.errors.email}</Box>}
+       
       </FormControl>
      
        <FormControl>
@@ -109,11 +162,9 @@ const LoginPage = ({nextPage}) => {
             fontWeight="300"
             lineHeight={"150%"}  id="password"
             type="password"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password} h='100%' _focusVisible={{border:'none'}}  placeholder='Enter your Password'   />
+             value={password} onChange={(e) => setPassword(e.target.value)} h='100%' _focusVisible={{border:'none'}}  placeholder='Enter your Password'   />
         </Box>
-        {formik.touched.password && formik.errors.password && <Box color="red">{formik.errors.password}</Box>}
+        
       </FormControl>
           </Flex>
           <Flex pt="50px " gap="30px" alignItems={"center"}>
@@ -125,10 +176,11 @@ const LoginPage = ({nextPage}) => {
      p="8px 40px"
      borderRadius={"50px"}
      border="1px solid white"
-    //  onClick={nextPage}
+  
      >
      Login
      </Button>
+     {error && <Box color="red">{error}</Box>}
     
       </Flex>
        
@@ -169,6 +221,8 @@ const LoginPage = ({nextPage}) => {
     </Box>
     </Box>
     </LayoutWrapper>
+    
   );
 };
+
 export default LoginPage;
