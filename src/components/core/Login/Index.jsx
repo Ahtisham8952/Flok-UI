@@ -1,30 +1,41 @@
-import { Box } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import { Box } from "@chakra-ui/react";
+import React, { useState } from "react";
+import LoginStepOne from "./LoginStepOne";
+import LayoutWrapper from "../LayoutWrapper/LayoutWrapper";
+import LoginStepTwo from "./LoginStepTwo";
+import { useQuery, useMutation } from "@apollo/react-hooks";
+import { LOGIN_QUERY } from "../../../graphQL/queries";
 
-import LoginStepOne from "./LoginStepOne"
-import LayoutWrapper from '../LayoutWrapper/LayoutWrapper'
-import LoginStepTwo from './LoginStepTwo'
 const LoginPageMain = () => {
-    const [step1,setstep1]=useState(false)
-    const PageHandler=()=>{
-        setstep1(!step1)
-    }
-  return (
-   
+	const [step1, setstep1] = useState(false);
 
-   
-   <Box>
-    <Box  display={step1? 'none':'block'} >
-     {/* <LoginPage nextPage={PageHandler}/> */}
-<LoginStepOne nextPage={PageHandler}/>
-    </Box>
-    <Box display={step1? 'block':'none'}>
-       <LoginStepTwo/>
-    </Box>
+	const email = "abubakarakram168@gmail.com"; // stattic credentials just for to test appollo configuration
+	const password = "abc123456";
 
-   </Box>
-  
-  )
-}
+	const { loading, error, data } = useQuery(LOGIN_QUERY, {
+		variables: {
+			loginInput: {
+				email: "abubakarakram168@gmail.com",
+				password: "abc123456",
+			},
+		},
+	});
+	console.log("the data", data);
 
-export default LoginPageMain
+	const PageHandler = () => {
+		setstep1(!step1);
+	};
+	return (
+		<Box>
+			<Box display={step1 ? "none" : "block"}>
+				{/* <LoginPage nextPage={PageHandler}/> */}
+				<LoginStepOne nextPage={PageHandler} />
+			</Box>
+			<Box display={step1 ? "block" : "none"}>
+				<LoginStepTwo />
+			</Box>
+		</Box>
+	);
+};
+
+export default LoginPageMain;
