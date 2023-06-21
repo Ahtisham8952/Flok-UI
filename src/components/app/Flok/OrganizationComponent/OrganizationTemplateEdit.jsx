@@ -2,6 +2,7 @@ import {
     Box,
     Button,
     Divider,
+    Flex,
     FormControl,
     Image,
     Img,
@@ -10,13 +11,52 @@ import {
     Text,
   } from "@chakra-ui/react";
   import React from "react";
+import { useState } from "react";
  
   
   export const OrganizationTemplateEdit = () => {
+    const [coverPhoto, setCoverPhoto] = useState('');
+  const [title, setTitle] = useState('');
+  const [slogan, setSlogan] = useState('');
+  const [details, setDetails] = useState([
+    { title: '', description: '', photo: '' },
+    { title: '', description: '', photo: '' },
+    { title: '', description: '', photo: '' },
+    { title: '', description: '', photo: '' },
+  ]);
+
+  const handleCoverPhotoChange = (event) => {
+    setCoverPhoto(event.target.value);
+  };
+
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
+  };
+
+  const handleSloganChange = (event) => {
+    setSlogan(event.target.value);
+  };
+
+  const handleDetailsChange = (index, field, value) => {
+    const updatedDetails = [...details];
+    updatedDetails[index][field] = value;
+    setDetails(updatedDetails);
+  };
+
+  const handleCreatePage = () => {
+   
+    console.log({
+      coverPhoto,
+      title,
+      slogan,
+      details,
+    });
+  };
     return (
       <Box px="10px" py="5px">
         <Box maxW="1844px" margin="auto">
           <Box
+          position={"relatives"}
             border="1px"
             borderWidth="5px"
             borderColor="#2E2E2E"
@@ -35,6 +75,7 @@ import {
             >
               Add Cover Photo
             </Text>
+            <Input position={"absolute"} height="457px" w="100%" opacity={"0.1"}  type='file' value={coverPhoto} onChange={handleCoverPhotoChange} />
           </Box>
         </Box>
   
@@ -66,10 +107,11 @@ import {
                       type="Text"
                       placeholder="Add Title Name"
                       border="none"
+                      value={title} onChange={handleTitleChange}
                     />
                   </InputGroup>
                   <InputGroup mt="20px" bgColor="white" p="4" borderRadius="35">
-                    <Input type="Text" placeholder="Add Slogan" border="none" />
+                    <Input value={slogan} onChange={handleSloganChange} type="Text" placeholder="Add Slogan" border="none" />
                   </InputGroup>
                 </FormControl>
               </Box>
@@ -106,24 +148,27 @@ import {
           </Text>
           <Box
             display="flex"
-            flexDirection={{ base: "column", md: "column", lg: "row" }}
+            flexWrap={'wrap'}
             justifyContent="center"
-            columnGap={{ lg: "70px", xl: "70px" }}
+            
             gap={{ base: "10px", md: "10px" }}
           >
+              {details.map((detail, index) => (
             <Box
+            key={index}
               bgColor="#E0E0E0"
               p="40px"
               borderRadius="20px"
-              width="45%"
+              width={{base:'100%',md:'48%',lg:'48%'}}
+              mb="20px"
               height="50%"
             >
               <FormControl>
                 <InputGroup bgColor="white" p="4" borderRadius="35">
-                  <Input type="Text" placeholder="Name" border="none" />
+                  <Input  value={detail.title} onChange={(event) => handleDetailsChange(index, 'title', event.target.value)} type="Text" placeholder="Name" border="none" />
                 </InputGroup>
                 <InputGroup mt="20px" bgColor="white" p="4" borderRadius="35">
-                  <Input type="Text" placeholder="Description" border="none" />
+                  <Input value={detail.description} onChange={(event) =>handleDetailsChange(index, 'description', event.target.value)} type="Text" placeholder="Description" border="none" />
                 </InputGroup>
                 <InputGroup
                   mt="20px"
@@ -133,7 +178,11 @@ import {
                   display="flex"
                   flexDirection="column"
                   justifyContent="center"
+                  position={"relative"}
                 >
+                 
+
+                  
                   <Image
                     src="uploadpic.svg"
                     alt="uploadpic"
@@ -141,134 +190,42 @@ import {
                     height="20"
                     width="20"
                   />
-                  <Text color="#67717D" fontSize="14px" fontWeight="300">
+                  <Text  color="#67717D" fontSize="14px" fontWeight="300">
                     Add a Photo
                   </Text>
+                    <Input
+                    position={"absolute"}
+                    h="100%"
+                    opacity={"0.1"}
+                    type="file"
+                value={detail.photo}
+                onChange={(event) =>
+                  handleDetailsChange(index, 'photo', event.target.value)
+                }/>
+               
                 </InputGroup>
               </FormControl>
             </Box>
+              ))}
   
-            <Box
-              bgColor="#E0E0E0"
-              p="40px"
-              borderRadius="20px"
-              width="45%"
-              height="50%"
-            >
-              <FormControl>
-                <InputGroup bgColor="white" p="4" borderRadius="35">
-                  <Input type="Text" placeholder="Name" border="none" />
-                </InputGroup>
-                <InputGroup mt="20px" bgColor="white" p="4" borderRadius="35">
-                  <Input type="Text" placeholder="Date" border="none" />
-                </InputGroup>
-                <InputGroup
-                  mt="20px"
-                  bgColor="white"
-                  p="4"
-                  borderRadius="35"
-                  display="flex"
-                  flexDirection="column"
-                  justifyContent="center"
-                >
-                  <Image
-                    src="uploadpic.svg"
-                    alt="uploadpic"
-                    alignItem="center"
-                    height="20"
-                    width="20"
-                  />
-                  <Text color="#67717D" fontSize="14px" fontWeight="300">
-                    Add a Photo
-                  </Text>
-                </InputGroup>
-              </FormControl>
-            </Box>
+            
           </Box>
-          <Box
-            display="flex"
-            flexDirection={{ base: "column", md: "column", lg: "row" }}
-            justifyContent="center"
-            columnGap={{ lg: "70px", xl: "70px" }}
-            gap={{ base: "10px", md: "10px" }}
-            mt={{ base: "20px", md: "20px", lg: "50px" }}
-          >
-            <Box
-              bgColor="#E0E0E0"
-              p="40px"
-              borderRadius="20px"
-              width="45%"
-              height="50%"
-            >
-              <FormControl>
-                <InputGroup bgColor="white" p="4" borderRadius="35">
-                  <Image alt="img" src="user.svg"/>
-                  <Input type="Text" placeholder="Name" border="none" />
-                </InputGroup>
-                <InputGroup mt="20px" bgColor="white" p="4" borderRadius="35">
-                  <Image alt="img" src="calendar.svg" />
-                  <Input type="Text" placeholder="Date" border="none" />
-                </InputGroup>
-                <InputGroup
-                  mt="20px"
-                  bgColor="white"
-                  p="4"
-                  borderRadius="35"
-                  display="flex"
-                  flexDirection="column"
-                >
-                  <Image
-                    src="uploadpic.svg"
-                    alt="uploadpic"
-                    alignItem="center"
-                    height="20"
-                    width="20"
-                  />
-                  <Text color="#67717D" fontSize="14px" fontWeight="300">
-                    Add a Photo
-                  </Text>
-                </InputGroup>
-              </FormControl>
-            </Box>
-  
-            <Box
-              bgColor="#E0E0E0"
-              p="40px"
-              borderRadius="20px"
-              width="45%"
-              height="50%"
-            >
-              <FormControl>
-                <InputGroup bgColor="white" p="4" borderRadius="35">
-                  <Image alt="img" src="user.svg"/>
-                  <Input type="Text" placeholder="Name" border="none" />
-                </InputGroup>
-                <InputGroup mt="20px" bgColor="white" p="4" borderRadius="35">
-                  <Image alt="img" src="calendar.svg" />
-                  <Input type="Text" placeholder="Date" border="none" />
-                </InputGroup>
-                <InputGroup
-                  mt="20px"
-                  bgColor="white"
-                  p="4"
-                  borderRadius="35"
-                  display="flex"
-                  flexDirection="column"
-                >
-                  <Image
-                    src="uploadpic.svg"
-                    alt="uploadpic"
-                    alignItem="center"
-                    height="20"
-                    width="20"
-                  />
-                  <Text color="#67717D" fontSize="14px" fontWeight="300">
-                    Add a Photo
-                  </Text>
-                </InputGroup>
-              </FormControl>
-            </Box>
-          </Box>
+          <Flex justifyContent="center">
+          <Button  bg="#1F1F1F" colorScheme={"#1F1F1F"} 
+     color="#FFFFFF"
+     fontSize="14px"
+     fontWeight="400"
+     lineHeight={"150%"}
+     p="8px 40px"
+     borderRadius={"50px"}
+     border="1px solid white"
+     onClick={handleCreatePage}
+    
+     >
+     Create Page
+     </Button>
+          </Flex>
+      
           <Divider
             mt="40px"
             orientation="horizontal"

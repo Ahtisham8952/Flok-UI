@@ -13,11 +13,47 @@ import {
   Text,
   UnorderedList,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import LayoutWrapper from "../LayoutWrapper/LayoutWrapper";
+import { useRouter } from "next/router";
 
 
 export const OrganizationloginStepOne = ({nextStep}) => {
+  const router = useRouter();
+  const [name,setName]=useState('')
+  const [email,setEmail]=useState('')
+  const [errors, setErrors] = useState({});
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+   
+    const errors = {};
+    if (name.trim() === '') {
+      errors.name = 'Name is required';
+    }
+    if (email.trim() === '') {
+      errors.email = 'Email is required';
+    }
+     else if (!isValidEmail(email)) {
+      errors.email = 'Invalid email format';
+    }
+
+    if (Object.keys(errors).length === 0) {
+    
+      console.log('Form submitted:', { name, email });
+      router.push('/organizationlogin/steptwo');
+    } else {
+      
+      setErrors(errors);
+    }
+  
+  };
+  const isValidEmail = (email) => {
+   
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+
   return (
    
 
@@ -56,7 +92,7 @@ export const OrganizationloginStepOne = ({nextStep}) => {
           <ListItem>Facilisis in pretium nisl aliquet</ListItem>
         </UnorderedList>
       </Box>
-      <form>
+      <form onSubmit={handleSubmit}>
 
       
       <Box display="flex" justifyContent="center" mt="15px">
@@ -73,18 +109,24 @@ export const OrganizationloginStepOne = ({nextStep}) => {
               p={{ base: "8px", md: "8px", lg: "10px" }}
               borderRadius="35px"
             >
-              <Image alt="img" src="user.svg" pl="18px" />
-              <Input _focusVisible={{border:'none'}} type="Text" placeholder="Name" border="none" />
+              <Image alt="img" src="/user.svg" pl="18px" />
+              <Input value={name} id="name" onChange={(e) => setName(e.target.value)} _focusVisible={{border:'none'}} type="Text" placeholder="Name" border="none" />
             </InputGroup>
+            {errors.name && 
+            <Text color="red">{errors.name}</Text>
+            }
             <InputGroup
               mt="20px"
               bgColor="white"
               p={{ base: "8px", md: "8px", lg: "10px" }}
               borderRadius="35"
             >
-              <Image alt="img" src="mailboxz.svg" pl="15px" />
-              <Input type="email"  _focusVisible={{border:'none'}}  placeholder="Email" border="none" />
+              <Image alt="img" src="/mailboxz.svg" pl="15px" />
+              <Input value={email} id="email" type="email" onChange={(e) => setEmail(e.target.value)}  _focusVisible={{border:'none'}}  placeholder="Email" border="none" />
             </InputGroup>
+            {errors.email && 
+            <Text color="red">{errors.email}</Text>
+            }
           </FormControl>
           <Text
             fontWeight="700"
@@ -129,7 +171,7 @@ export const OrganizationloginStepOne = ({nextStep}) => {
      p="8px 40px"
      borderRadius={"50px"}
      border="1px solid white"
-     onClick={nextStep}
+    
     
      >
     Save Contact Prefernces

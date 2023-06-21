@@ -11,10 +11,44 @@ import {
   } from "@chakra-ui/react";
   import React from "react";
 import { Upload } from "./Upload";
+import { useState } from "react";
+import { useRouter } from "next/router";
 
  
   
-  export const OrganizationloginStepTwo = ({seeProfile}) => {
+  export const OrganizationloginStepTwo = () => {
+    const router = useRouter();
+    const [bannerImage, setBannerImage] = useState(null);
+    const [mission, setMission] = useState('');
+    const [about, setAbout] = useState('');
+    const [staff, setStaff] = useState('');
+    const [staffImages, setStaffImages] = useState([]);
+  
+    const handleBannerImageChange = (e) => {
+      const file = e.target.files[0];
+      setBannerImage(file);
+    };
+  
+    const handleStaffImageChange = (e) => {
+      const files = Array.from(e.target.files);
+      setStaffImages(files);
+    };
+  
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log('Banner Image:', bannerImage);
+      console.log('Mission Statement:', mission);
+      console.log('About:', about);
+      console.log('Staff Details:', staff);
+      console.log('Staff Images:', staffImages);
+   
+      setBannerImage(null);
+      setMission('');
+      setAbout('');
+      setStaff('');
+      setStaffImages([]);
+      router.push('/organizationprofile');
+    };
     return (
       <Box p="30px">
         <Heading
@@ -51,6 +85,9 @@ import { Upload } from "./Upload";
             </Text>
           </Box>
         </Box>
+        <form onSubmit={handleSubmit}>
+
+        
         <Box display="flex" justifyContent="center" mt="20px" flexDirection="row">
           <Box
             bgColor="#E0E0E0"
@@ -76,7 +113,7 @@ import { Upload } from "./Upload";
               >
                 Upload Image:{" "}
               </Text>
-              <Upload />
+              <Upload FileInput={handleBannerImageChange} />
             </Box>
             <Box
               display="flex"
@@ -110,7 +147,7 @@ import { Upload } from "./Upload";
               borderRadius="10px"
               height="120px"
             >
-              <Textarea resize={"none"} _focusVisible={{border:'none'}} type="Text" placeholder="Text" border="none" />{" "}
+              <Textarea value={mission} onChange={(e) => setMission(e.target.value)} resize={"none"} _focusVisible={{border:'none'}} type="Text" placeholder="Text" border="none" />{" "}
             </InputGroup>
             <Box
               display="flex"
@@ -144,7 +181,7 @@ import { Upload } from "./Upload";
               borderRadius="10px"
               height="120px"
             >
-              <Textarea resize={"none"} _focusVisible={{border:'none'}} type="Text" placeholder="Text" border="none" />{" "}
+              <Textarea value={about} onChange={(e) => setAbout(e.target.value)} resize={"none"} _focusVisible={{border:'none'}} type="Text" placeholder="Text" border="none" />{" "}
             </InputGroup>
             <Box
               display="flex"
@@ -169,7 +206,7 @@ import { Upload } from "./Upload";
               >
                 Upload Image:{" "}
               </Text>
-              <Upload />
+              <Upload  multiple FileInput={handleStaffImageChange} />
             </Box>
             <InputGroup
               mt="20px"
@@ -178,7 +215,7 @@ import { Upload } from "./Upload";
               borderRadius="10px"
               height="120px"
             >
-              <Textarea resize={"none"} _focusVisible={{border:'none'}} type="Text" placeholder="Text" border="none" />{" "}
+              <Textarea value={staff} onChange={(e) => setStaff(e.target.value)} resize={"none"} _focusVisible={{border:'none'}} type="Text" placeholder="Text" border="none" />{" "}
             </InputGroup>
             <Box>
               <Text
@@ -212,7 +249,7 @@ import { Upload } from "./Upload";
               </Box>
             </Box>
             <Box pt="25px">
-          <Box mt='30px'  bg="#1F1F1F" colorScheme={"#1F1F1F"} 
+          <Button mt='30px'  bg="#1F1F1F" colorScheme={"#1F1F1F"} 
      color="#FFFFFF"
      fontSize={{base:'11px',md:'14px'}}
      fontWeight="400"
@@ -221,15 +258,17 @@ import { Upload } from "./Upload";
      borderRadius={"50px"}
      border="1px solid white"
      w='100%'
-     onClick={seeProfile}
+    //  onClick={seeProfile}
+    type='submit'
      
      >
    Save Oraganization details  (You will be able to edit to these later)
-     </Box>
+     </Button>
           </Box>
           </Box>
           
         </Box>
+        </form>
         
       </Box>
     );

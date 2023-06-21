@@ -30,23 +30,7 @@ const LoginPage = () => {
   const [id, setid] = useState('');
   const [error, setError] = useState('');
 
-  // const callApi = async (value) => {
-  //   try {
-  //     const response = await fetch('http://localhost:3000/graphql/', {
-  //       method: 'POST',
-  //       body: JSON.stringify({ query: value }),
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         'Accept': 'application/json',
-  //         'Authorization': `Bearer TOKEN_HERE`
-  //       },
-  //     });
-  //     return await response.json();
-  //   } catch (error) {
-  //     console.error('API error:', error);
-  //     throw new Error('An error occurred during the API call');
-  //   }
-  // };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -78,10 +62,10 @@ const LoginPage = () => {
           router.push('/parentlogin');
         } else if (userType === 'PROVIDER') {
           
-          router.push('/organizationlogin');
+          router.push('/organizationlogin/stepone');
         } else {
           
-          router.push('/organizationlogin');
+          router.push('/organizationlogin/stepone');
         }
       } else {
         
@@ -162,6 +146,7 @@ const LoginPage = () => {
             fontWeight="300"
             lineHeight={"150%"}  id="password"
             type="password"
+            
              value={password} onChange={(e) => setPassword(e.target.value)} h='100%' _focusVisible={{border:'none'}}  placeholder='Enter your Password'   />
         </Box>
         
