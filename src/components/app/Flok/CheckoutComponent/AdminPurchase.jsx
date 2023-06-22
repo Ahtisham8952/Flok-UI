@@ -356,21 +356,21 @@ const AdminPurchase = () => {
           pt="65px"
           color="#DAD9D9"
         />
-          <Box mt='50px'>
-      <Text
+        <Box mt='50px'>
+          <Text
             mb='30px'
             color="#191919"
             fontSize="32px"
             fontWeight="600"
             lineHeight={"150%"}
           >
-       More Events In This Area
+            More Events In This Area
           </Text>
-          <FlokSlider/>
+          <FlokSlider />
+        </Box>
       </Box>
-      </Box>
-    
-     
+
+
       <Flex
         justifyContent="center"
         gap="22px"
@@ -392,7 +392,7 @@ const AdminPurchase = () => {
       </Flex>
       <Box textAlign="center" pt="60px">
         <Button
-        as={Link}
+          as={Link}
           bg="black"
           color="white"
           _hover={{ bg: "black", color: "white" }}

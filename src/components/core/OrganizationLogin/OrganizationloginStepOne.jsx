@@ -16,16 +16,18 @@ import {
 import React, { useState } from "react";
 import LayoutWrapper from "../LayoutWrapper/LayoutWrapper";
 import { useRouter } from "next/router";
+import ApiCaller from '../../../ApiCaller';
 
 
-export const OrganizationloginStepOne = ({nextStep}) => {
+export const OrganizationloginStepOne = () => {
   const router = useRouter();
+  const [submitting, setSubmitting] = useState(false);
   const [name,setName]=useState('')
   const [email,setEmail]=useState('')
   const [errors, setErrors] = useState({});
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-   
+  const { callApi } = ApiCaller();
+  const validateForm = () => {
+
     const errors = {};
     if (name.trim() === '') {
       errors.name = 'Name is required';
@@ -45,6 +47,48 @@ export const OrganizationloginStepOne = ({nextStep}) => {
       
       setErrors(errors);
     }
+
+    setErrors(errors);
+
+    return Object.keys(errors).length === 0;
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const isValid = validateForm();
+
+    if (!isValid) {
+      return;
+    }
+
+
+    setSubmitting(true);
+
+    const mutation = await callApi(`
+      mutation registerProvider {
+        registerProvider(
+          createProviderInput: {
+            email: "${email}",
+            name: "${name}",
+            titleName: "${name}",
+           
+            
+            
+            
+          }
+        ) {
+          email
+          name
+          titleName
+          createdAt
+        }
+      }
+    `);
+
+    console.log(mutation);
+
+    setSubmitting(false);
+  
+   
   
   };
   const isValidEmail = (email) => {

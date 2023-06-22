@@ -1,34 +1,34 @@
 import {
-    Box,
-    Checkbox,
-    Divider,
-    Flex,
-    FormControl,
-    Image,
-    Input,
-    InputGroup,
-    Stack,
-    Text,
-  } from "@chakra-ui/react";
-  import React from "react";
+  Box,
+  Checkbox,
+  Divider,
+  Flex,
+  FormControl,
+  Image,
+  Input,
+  InputGroup,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
+import React from "react";
 import LayoutWrapper from "../../../core/LayoutWrapper/LayoutWrapper";
-  import FlokSlider from "../LandingPage/FlokSlider"
-  
-  export const ParentProfile = () => {
-    return (
-      <LayoutWrapper>
+import FlokSlider from "../LandingPage/FlokSlider"
 
-      
+export const ParentProfile = () => {
+  return (
+    <LayoutWrapper>
+
+
       <Box py='30px' maxW={"1760px"} px='20px' mx="auto">
         <Flex justifyContent={"center"} alignItems={"center"}>
-        <Text
-            
+          <Text
+
             color="#191919"
-            fontSize={{base:'40px',md:'45px',xl:'55px',xxxl:'64px'}}
+            fontSize={{ base: '40px', md: '45px', xl: '55px', xxxl: '64px' }}
             fontWeight="600"
             lineHeight={"150%"}
           >
-       User Profile
+            User Profile
           </Text>
         </Flex>
         <Flex
@@ -38,7 +38,7 @@ import LayoutWrapper from "../../../core/LayoutWrapper/LayoutWrapper";
           flexDirection={{ base: "column", lg: "row" }}
         >
           <Flex>
-            <Text fontSize={{base:'18px',md:'20px',xl:'24px'}} fontWeight="700" lineHeight="34px">
+            <Text fontSize={{ base: '18px', md: '20px', xl: '24px' }} fontWeight="700" lineHeight="34px">
               Select Interested categories
             </Text>
           </Flex>
@@ -103,7 +103,7 @@ import LayoutWrapper from "../../../core/LayoutWrapper/LayoutWrapper";
             "2xl": "start",
           }}
         >
-         
+
           <Divider
             mt="40px"
             orientation="horizontal"
@@ -130,12 +130,12 @@ import LayoutWrapper from "../../../core/LayoutWrapper/LayoutWrapper";
             <Box bgColor="#E0E0E0" p="40px" borderRadius="20px" height="80%">
               <FormControl>
                 <InputGroup bgColor="white" p="4" borderRadius="35">
-                  <Image alt="img" src="user.svg"/>
-                  <Input _focusVisible={{border:'none'}} type="Text" placeholder="Name" border="none" />
+                  <Image alt="img" src="user.svg" />
+                  <Input _focusVisible={{ border: 'none' }} type="Text" placeholder="Name" border="none" />
                 </InputGroup>
                 <InputGroup mt="20px" bgColor="white" p="4" borderRadius="35">
-                  <Image  alt="img" src="calendar.svg" />
-                  <Input  _focusVisible={{border:'none'}} type="Text" placeholder="Date" border="none" />
+                  <Image alt="img" src="calendar.svg" />
+                  <Input _focusVisible={{ border: 'none' }} type="Text" placeholder="Date" border="none" />
                 </InputGroup>
                 <InputGroup
                   mt="20px"
@@ -159,7 +159,7 @@ import LayoutWrapper from "../../../core/LayoutWrapper/LayoutWrapper";
               </FormControl>
             </Box>
           </Box>
-  
+
           <Box mt={{ base: "0", md: "0", lg: "55" }}>
             <Text
               fontWeight="700"
@@ -170,25 +170,25 @@ import LayoutWrapper from "../../../core/LayoutWrapper/LayoutWrapper";
             >
               Options
             </Text>
-  
+
             <Box mt="5">
               <Stack gap="5">
-                <Checkbox size="md"  borderColor={"black"}>
+                <Checkbox size="md" borderColor={"black"}>
                   Primary contact
                 </Checkbox>
-                <Checkbox size="md"  borderColor={"black"}>
+                <Checkbox size="md" borderColor={"black"}>
                   Primary contact
                 </Checkbox>
-                <Checkbox size="md"  defaultChecked borderColor={"black"}>
+                <Checkbox size="md" defaultChecked borderColor={"black"}>
                   Parent or guardian{" "}
                 </Checkbox>
-                <Checkbox size="md"  defaultChecked borderColor={"black"}>
+                <Checkbox size="md" defaultChecked borderColor={"black"}>
                   Parent or guardian{" "}
                 </Checkbox>
                 <Checkbox size="md" borderColor={"black"} >
                   Email notifications{" "}
                 </Checkbox>
-                <Checkbox size="md"  borderColor={"black"}>
+                <Checkbox size="md" borderColor={"black"}>
                   Instant notifications{" "}
                 </Checkbox>
                 <Checkbox size="md" borderColor={"black"} >
@@ -208,8 +208,8 @@ import LayoutWrapper from "../../../core/LayoutWrapper/LayoutWrapper";
             "2xl": "start",
           }}
         >
-        
-        
+
+
           <Divider
             mt="40px"
             orientation="horizontal"
@@ -218,74 +218,73 @@ import LayoutWrapper from "../../../core/LayoutWrapper/LayoutWrapper";
           />
         </Box>
         <Box mt="37px">
-          
+
           <Box mb='50px'>
 
-   
-    <Flex justifyContent={"flex-start"} alignItems={"flex-start"} mb='50px'>
-    <Text
-        lineHeight={"42px"}
-        fontSize={"32px"}
-        fontWeight={"600"}
-    
-        color="#1F1F1F"
-        >
-        Waiting lists
 
-        </Text>
+            <Flex justifyContent={"flex-start"} alignItems={"flex-start"} mb='50px'>
+              <Text
+                lineHeight={"42px"}
+                fontSize={"32px"}
+                fontWeight={"600"}
 
-       
-    </Flex>
-    <FlokSlider/>
-    </Box>
-          
+                color="#1F1F1F"
+              >
+                Waiting lists
+
+              </Text>
+
+
+            </Flex>
+            <FlokSlider />
+          </Box>
+
         </Box>
         <Box mt="37px">
-          
+
           <Box mb='50px'>
 
-   
-    <Flex justifyContent={"flex-start"} alignItems={"flex-start"} mb='50px'>
-    <Text
-        lineHeight={"42px"}
-        fontSize={"32px"}
-        fontWeight={"600"}
-    
-        color="#1F1F1F"
-        >
-      Active Orders
-        </Text>
 
-       
-    </Flex>
-    <FlokSlider/>
-    </Box>
-          
+            <Flex justifyContent={"flex-start"} alignItems={"flex-start"} mb='50px'>
+              <Text
+                lineHeight={"42px"}
+                fontSize={"32px"}
+                fontWeight={"600"}
+
+                color="#1F1F1F"
+              >
+                Active Orders
+              </Text>
+
+
+            </Flex>
+            <FlokSlider />
+          </Box>
+
         </Box>
         <Box mt="37px">
-          
+
           <Box mb='50px'>
 
-   
-    <Flex justifyContent={"flex-start"} alignItems={"flex-start"} mb='50px'>
-    <Text
-        lineHeight={"42px"}
-        fontSize={"32px"}
-        fontWeight={"600"}
-    
-        color="#1F1F1F"
-        >
-       Orders History
-        </Text>
 
-       
-    </Flex>
-    <FlokSlider/>
-    </Box>
-          
+            <Flex justifyContent={"flex-start"} alignItems={"flex-start"} mb='50px'>
+              <Text
+                lineHeight={"42px"}
+                fontSize={"32px"}
+                fontWeight={"600"}
+
+                color="#1F1F1F"
+              >
+                Orders History
+              </Text>
+
+
+            </Flex>
+            <FlokSlider />
+          </Box>
+
         </Box>
       </Box>
-      </LayoutWrapper>
-    );
-  };
-  
+    </LayoutWrapper>
+  );
+};

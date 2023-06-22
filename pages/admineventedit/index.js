@@ -4,9 +4,9 @@ import { Box } from '@chakra-ui/react'
 
 const AdminEventPage = () => {
   return (
-   <Box>
-<AdminEventForm/>
-   </Box>
+    <Box>
+      <AdminEventForm />
+    </Box>
   )
 }
 

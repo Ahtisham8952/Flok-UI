@@ -46,6 +46,7 @@ const LoginPage = () => {
           ) {
             email
             name
+            accessToken
             
             
           }
@@ -55,8 +56,9 @@ const LoginPage = () => {
       const response = await callApi(value);
 
       if (response && response.data && response.data.loginUser) {
-        const { userType } = response.data.loginUser;
-
+        const { userType, accessToken } = response.data.loginUser;
+        localStorage.setItem('token', accessToken);
+        console.log( accessToken);
         if (userType === 'PARENT') {
         
           router.push('/parentlogin');
@@ -76,7 +78,7 @@ const LoginPage = () => {
       setError('An error occurred during login');
     }
   };
-
+ 
   return (
     <LayoutWrapper>
 <Box maxW={"1760px"} w='100%' px='20px' mx={"auto"} >
