@@ -1,35 +1,44 @@
 // pages/_app.js
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider } from "@chakra-ui/react";
+import "@fontsource/rajdhani";
+import { mynewtheme } from "../src/theme";
+import {
+	ApolloClient,
+	InMemoryCache,
+	ApolloProvider,
+	createHttpLink,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 
+const BASE_URL = "http://localhost:3000/graphql/";
 
-import "@fontsource/rajdhani"
+const httpLink = createHttpLink({
+	uri: BASE_URL,
+});
 
+const authLink = setContext((_, { headers }) => {
+	const token = localStorage.getItem("token");
+	return {
+		headers: {
+			...headers,
+			authorization: token ? `Bearer ${token}` : "",
+		},
+	};
+});
 
+const client = new ApolloClient({
+	link: authLink.concat(httpLink),
+	cache: new InMemoryCache(),
+});
 
-
-
-
-import { mynewtheme } from '../src/theme'
-
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-
-
-import { useState } from 'react'
-
-const queryClient = new QueryClient()
 function Flok({ Component, pageProps }) {
-
-  return (
-    <ChakraProvider resetCSS theme={mynewtheme}>
-      <QueryClientProvider client={queryClient}>
-        <Component {...pageProps} />
-
-
-      </QueryClientProvider>
-    </ChakraProvider>
-
-
-  )
+	return (
+		<ChakraProvider resetCSS theme={mynewtheme}>
+			<ApolloProvider client={client}>
+				<Component {...pageProps} />
+			</ApolloProvider>
+		</ChakraProvider>
+	);
 }
 
-export default Flok
+export default Flok;
