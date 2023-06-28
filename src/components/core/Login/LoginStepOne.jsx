@@ -27,8 +27,27 @@ const LOGIN_QUERY = gql`
 	}
 `;
 
+const MY_PROVIDER_QUERY = gql`
+	query FindMyProvider {
+		findMyProvider {
+			id
+			createdAt
+			updatedAt
+			name
+			titleName
+			missionStatementImageURL
+			missionStatementImageKey
+			bannerURL
+			bannerKey
+			pageTemplate
+			email
+		}
+	}
+`;
+
 const LoginPage = () => {
 	const [login] = useLazyQuery(LOGIN_QUERY);
+	const [getMyProvider] = useLazyQuery(MY_PROVIDER_QUERY);
 	const router = useRouter();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -49,12 +68,23 @@ const LoginPage = () => {
 			if (response && response.data && response.data.loginUser) {
 				const { accessToken, ...rest } = response.data.loginUser;
 				localStorage.setItem("token", accessToken);
-				localStorage.setItem("user", JSON.stringify(rest));
 
 				if (rest.userType === "PARENT") {
-					router.push("/parentlogin");
+					// router.push("/parentlogin");
 				} else {
-					router.push("/organizationlogin/stepone");
+					try {
+						const myProvider = await getMyProvider();
+						if (
+							myProvider?.error?.message ===
+							"Cannot read properties of null (reading 'provider')"
+						) {
+							router.push("/organizationlogin/stepone");
+						} else {
+							router.push("/organizationprofile");
+						}
+					} catch (err) {
+						console.log("err", err);
+					}
 				}
 			} else {
 				setError("Invalid email or password");
