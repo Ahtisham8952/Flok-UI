@@ -1,15 +1,8 @@
-import React from 'react'
-
-
-
-import LoginPageMain from '../../src/components/core/Login/Index'
+import React from "react";
+import LoginPageMain from "../../src/components/core/Login/Index";
 
 const LoginPageFlow = () => {
-  return (
-   <>
-   <LoginPageMain/>
-   </>
-  )
-}
+	return <LoginPageMain />;
+};
 
-export default LoginPageFlow
+export default LoginPageFlow;
