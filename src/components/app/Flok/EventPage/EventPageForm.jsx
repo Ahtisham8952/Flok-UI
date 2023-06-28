@@ -109,6 +109,22 @@ const StatusCheckBoxes = [
 	},
 ];
 
+const CustomInput = forwardRef(({ value, onClick, onChange }, ref) => (
+	<Input
+		size="md"
+		htmlSize="20"
+		bg="white"
+		width={{ base: "100%", lg: "100%" }}
+		_focusVisible="none"
+		onClick={onClick}
+		value={value}
+		onChange={onChange}
+		ref={ref}
+	/>
+));
+
+CustomInput.displayName = "CustomInput";
+
 const EventPageForm = () => {
 	const { data: { categories: allCategories = [] } = { categories: [] } } =
 		useQuery(CATEGORIES_QUERY);
@@ -174,20 +190,6 @@ const EventPageForm = () => {
 			console.log(err);
 		}
 	};
-
-	const CustomInput = forwardRef(({ value, onClick, onChange }, ref) => (
-		<Input
-			size="md"
-			htmlSize="20"
-			bg="white"
-			width={{ base: "100%", lg: "100%" }}
-			_focusVisible="none"
-			onClick={onClick}
-			value={value}
-			onChange={onChange}
-			ref={ref}
-		/>
-	));
 
 	return (
 		<Box>
