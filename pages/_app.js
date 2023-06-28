@@ -11,7 +11,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import "../styles/globals.css";
 
-const BASE_URL = "http://localhost:3000/graphql/";
+const BASE_URL = process.env.GRAPHQL_API_URL;
 
 const httpLink = createHttpLink({
 	uri: BASE_URL,
