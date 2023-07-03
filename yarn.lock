@@ -1234,6 +1234,11 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.3.2.tgz#31b9c510d8cada9683549e1dbb4284cca5001faf"
   integrity sha512-V+MvGwaHH03hYhY+k6Ef/xKd6RYlc4q8WBx+2ANmipHJcKuktNcI/NgEsJgdSUF6Lw32njT6OnrRsKYCdgHjYw==
 
+"@south-paw/typeface-vag-rounded@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@south-paw/typeface-vag-rounded/-/typeface-vag-rounded-1.0.0.tgz#bab2f6158a6e3fb466b59bd1d3f0aac5f20db96c"
+  integrity sha512-Elxt6N6Sw3c+Vh6wyHodjSO8VoEwunOu10/+6I7I0MiZp/cwihTbU0KDXl3jgqfdMjgze4MsL5l4+BThbWdvyQ==
+
 "@swc/helpers@0.4.11":
   version "0.4.11"
   resolved "https://registry.yarnpkg.com/@swc/helpers/-/helpers-0.4.11.tgz#db23a376761b3d31c26502122f349a21b592c8de"

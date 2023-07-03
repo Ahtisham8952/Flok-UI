@@ -129,38 +129,44 @@ const FormComponent = () => {
 			<LayoutWrapper>
 				<Box maxW={"1560px"} w="100%" px="20px" mx="auto">
 					<Box py="32px">
-						<Heading
-							as="h2"
+						<Text
+							
 							fontSize="48px"
-							fontWeight="700px"
+							fontWeight="700"
 							lineHeight="58px"
 							textAlign="center"
 							pt="5px"
-							pb="15px"
+							
 						>
 							Join the Flok
-						</Heading>
+						</Text>
 						<Text
 							textAlign="center"
-							fontWeight="300px"
+							fontWeight="300"
 							color="#626262"
-							size="16px"
-							pt="30px"
+							fontSize={"16px"}
+							pt="20px"
+							maxW={"556px"}
+							mx='auto'
 						>
 							Complete the registration to enhance your Flok experience and
 							unliock enhanced features.
 						</Text>
 						<Box display="flex" justifyContent="center">
-							<UnorderedList>
-								<ListItem>Lorem ipsum dolor sit amet</ListItem>
-								<ListItem>Consectetur adipiscing elit</ListItem>
-								<ListItem>Integer molestie lorem at massa</ListItem>
-								<ListItem>Facilisis in pretium nisl aliquet</ListItem>
+							<UnorderedList
+							
+							fontWeight="300"
+							color="#626262"
+							fontSize={"16px"}>
+								<ListItem>Notifications for events that you are interested in</ListItem>
+								<ListItem>Be the first to know about new events.</ListItem>
+								<ListItem>Host events of your own</ListItem>
+								<ListItem>Quickly register for events and make sure your kids are <br/> able to participate in the hottest, funnest events.</ListItem>
 							</UnorderedList>
 						</Box>
 
 						<form onSubmit={handleSubmit}>
-							<VStack spacing={4} align="stretch">
+							<VStack spacing={4} align="stretch" maxW={"852px"} w="100%">
 								<FormControl isInvalid={errors.name}>
 									<FormLabel fontWeight={"700"} htmlFor="name">
 										Name
@@ -244,8 +250,8 @@ const FormComponent = () => {
 									<FormErrorMessage>{errors.confirmPassword}</FormErrorMessage>
 								</FormControl>
 								<Box width="40%" pt="5px">
-									<Heading
-										as="h2"
+									<Text
+										
 										fontSize={{ base: "20px", md: "24px" }}
 										fontWeight="700"
 										lineHeight="58px"
@@ -254,7 +260,7 @@ const FormComponent = () => {
 										textColor="#1F1F1F"
 									>
 										Account type{" "}
-									</Heading>
+									</Text>
 									<FormControl isInvalid={errors.userType}>
 										<RadioGroup
 											id="userType"
@@ -264,9 +270,9 @@ const FormComponent = () => {
 										>
 											<VStack spacing={2} alignItems={"left"}>
 												<Radio value="PARENT">Parent</Radio>
-												{/* <Radio value="ADMIN">Admin</Radio> */}
-												<Radio value="PROVIDER">
-													Event provider / Organaization
+											
+												<Radio value="PROVIDER" w="max-content">
+													Event provider/Organaization
 												</Radio>
 											</VStack>
 										</RadioGroup>
@@ -274,8 +280,8 @@ const FormComponent = () => {
 									</FormControl>
 								</Box>
 								<Box width="40%" pt="5px">
-									<Heading
-										as="h2"
+									<Text
+									
 										fontSize={{ base: "20px", md: "24px" }}
 										fontWeight="700"
 										lineHeight="58px"
@@ -284,15 +290,15 @@ const FormComponent = () => {
 										textColor="#1F1F1F"
 									>
 										Notification:
-									</Heading>
+									</Text>
 									<Stack>
 										<Checkbox>Email</Checkbox>
-										<Checkbox defaultChecked>Instant notifications</Checkbox>
+										<Checkbox defaultChecked w="max-content">Instant notifications</Checkbox>
 									</Stack>
 								</Box>
 								<Box width="100%" pt="5px">
-									<Heading
-										as="h2"
+									<Text
+										
 										fontSize={{ base: "20px", md: "24px" }}
 										fontWeight="700"
 										lineHeight="58px"
@@ -301,7 +307,7 @@ const FormComponent = () => {
 										textColor="#1F1F1F"
 									>
 										Terms and Conditions:
-									</Heading>
+									</Text>
 
 									<FormControl>
 										<Checkbox defaultChecked>

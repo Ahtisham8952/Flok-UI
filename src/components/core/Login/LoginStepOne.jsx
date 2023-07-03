@@ -99,20 +99,20 @@ const LoginPage = () => {
 		<LayoutWrapper>
 			<Box maxW={"1760px"} w="100%" px="20px" mx={"auto"}>
 				<Box py={{ base: "40px", md: "85px" }}>
-					<Heading
-						as="h2"
+					<Text
+					
 						fontSize="48px"
-						fontWeight="700px"
+						fontWeight="700"
 						lineHeight="58px"
 						textAlign="center"
 					>
 						Login
-					</Heading>
+					</Text>
 
 					<Text
-						pt={{ base: "20px", md: "89px" }}
-						textAlign={{ base: "center", md: "flex-start" }}
-						maxW={"1470px"}
+						pt="30px"
+						
+						maxW={"1195px"}
 						fontWeight="700px"
 						fontSize={{ base: "18px", md: "24px", lg: "26px", xl: "32px" }}
 						lineHeight={{ base: "28px", md: "34px", lg: "36px", xl: "40px" }}
@@ -122,8 +122,9 @@ const LoginPage = () => {
 					</Text>
 
 					<Text
-						textAlign={{ base: "center", md: "flex-start" }}
-						fontWeight="300px"
+						color="#626262"
+						maxW={"1062px"}
+						fontWeight="300"
 						fontSize={{ base: "18px", md: "20px", lg: "22px", xl: "24px" }}
 						lineHeight={{ base: "18px", md: "30px", lg: "32px", xl: "34px" }}
 						pt="25px"
@@ -143,7 +144,7 @@ const LoginPage = () => {
 								mt="75px"
 								flexDirection={{ base: "column", md: "row" }}
 							>
-								<FormControl>
+								<FormControl isRequired>
 									<FormLabel htmlFor="email">Email</FormLabel>
 
 									<Box
@@ -167,7 +168,7 @@ const LoginPage = () => {
 									</Box>
 								</FormControl>
 
-								<FormControl>
+								<FormControl isRequired>
 									<FormLabel htmlFor="password">Password</FormLabel>
 
 									<Box

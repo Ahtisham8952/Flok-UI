@@ -1,5 +1,5 @@
 import "@fontsource/poppins";
-
+require("@south-paw/typeface-vag-rounded");
 import { extendTheme } from "@chakra-ui/react";
 
 export const mynewtheme = extendTheme({
@@ -47,7 +47,7 @@ export const mynewtheme = extendTheme({
 	},
 	fonts: {
 		dinFonts: `"D-DIN", sans-serif`,
-		body: `"Poppins", sans-serif;`,
+		body: `"VAGRounded", sans-serif;`,
 		raleway: `"Raleway", sans-serif;`,
 		rajdhaniFont: `"Rajdhani", sans-serif;`,
 	},
