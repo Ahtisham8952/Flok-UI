@@ -30,11 +30,20 @@ export const ChildrenInfoCard = () => {
       <FormControl>
         <InputGroup bgColor="white" p={{base:'10px',lg:'23px'}} borderRadius="35">
           <Image alt="img" src="user.svg"/>
-          <Input _focusVisible={{border:'none'}} type="Text" placeholder="Name" border="none" />
+          <Input
+          placeholder="Child's name"
+          value={child.name || ''}
+          onChange={(event) => handleNameChange(index, event)}
+           _focusVisible={{border:'none'}} type="Text"  border="none" />
         </InputGroup>
         <InputGroup mt="20px" bgColor="white" p={{base:'10px',lg:'23px'}} borderRadius="35">
           <Image alt="img" src="calendar.svg" />
-          <Input _focusVisible={{border:'none'}} type="Text" placeholder="Date" border="none" />
+          <Input 
+type="date"
+placeholder="Child's birthdate"
+value={child.birthdate || ''}
+onChange={(event) => handleBirthdateChange(index, event)}
+          _focusVisible={{border:'none'}}   border="none" />
         </InputGroup>
       </FormControl>
       <Box>
@@ -53,17 +62,11 @@ export const ChildrenInfoCard = () => {
           <Box>
             <Stack>
               
-              <RadioGroup name="form-name" display={"flex"} flexDirection={{base:'row',md:'column'}} gap="30px" >
-      <Radio _checked={{border:"4px solid black"}} value="1" defaultChecked>
-      Male
-        </Radio>
-        <Radio _checked={{border:"4px solid black"}} w="max-content" value="2">
-          Female
-        </Radio>
-        <Radio _checked={{border:"4px solid black"}} w="max-content" value="3">
-          other
-        </Radio>
-</RadioGroup>
+            <RadioGroup onChange={(value) => handleGenderChange(index, value)}>
+            <Radio value="male">Male</Radio>
+            <Radio value="female">Female</Radio>
+            <Radio value="other">Other</Radio>
+          </RadioGroup>
               
             </Stack>
           </Box>
