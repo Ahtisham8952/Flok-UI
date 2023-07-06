@@ -1,17 +1,12 @@
-import React from 'react'
-import LayoutWrapper from '../../src/components/core/LayoutWrapper/LayoutWrapper'
-import DashboardMain from "../../src/components/app/Flok/DashBoardComponet/index"
-import { Box } from '@chakra-ui/react'
+import { Box } from "@chakra-ui/react";
+import React from "react";
+import DashboardMain from "../../src/components/app/Flok/DashBoardComponet/index";
 const DashboardPage = () => {
   return (
-   <Box>
-   
-      <DashboardMain/>
+    <Box>
+      <DashboardMain />
+    </Box>
+  );
+};
 
-    
-
-   </Box>
-  )
-}
-
-export default DashboardPage
+export default DashboardPage;
