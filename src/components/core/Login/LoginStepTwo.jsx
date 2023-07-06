@@ -26,7 +26,7 @@ import {
   import { gql, useMutation } from "@apollo/client";
   
   const CREATE_UPDATE_CHILD_MUTATION = gql`
-  mutation CreateUpdateChild($name: String!, $dateOfBirth: Date!, $gender: String!) {
+  mutation CreateUpdateChild($name: String!, $dateOfBirth: DateTime!, $gender: Gender!) {
     createUpdateChild(
       createUpdateChildInput: { name: $name, dateOfBirth: $dateOfBirth, gender: $gender }
     ) {
@@ -48,46 +48,66 @@ import {
 		{ name: "", dateOfBirth: "", gender: "" },
 		{ name: "", dateOfBirth: "", gender: "" },
 	  ]);
+	
 	  const [createUpdateChild] = useMutation(CREATE_UPDATE_CHILD_MUTATION);
+	  const childResponses = [];
 	
 	  const addChild = () => {
-    if (children.length < 6) {
-      setChildren([...children, { name: "", dateOfBirth: "", gender: "" }, { name: "", dateOfBirth: "", gender: "" }]);
-    }
-  };
-  
-	const handleNameChange = (index, event) => {
-	  const updatedChildren = [...children];
-	  updatedChildren[index].name = event.target.value;
-	  setChildren(updatedChildren);
-	};
-  
-	const handleBirthdateChange = (index, event) => {
-	  const updatedChildren = [...children];
-	  updatedChildren[index].dateOfBirth = event.target.value;
-	  setChildren(updatedChildren);
-	};
-  
-	const handleGenderChange = (index, value) => {
-	  const updatedChildren = [...children];
-	  updatedChildren[index].gender = value;
-	  setChildren(updatedChildren);
-	};
-  
-	const saveChildren = async () => {
-	  for (const child of children) {
-		const { id, createdAt, updatedAt } = await createUpdateChild({
-		  variables: {
-			name: child.name,
-			dateOfBirth: child.dateOfBirth,
-			gender: child.gender,
-		  },
-		});
-  
-		// Perform any necessary actions with the response data
-		console.log(id, createdAt, updatedAt);
-	  }
-	};
+		if (children.length < 6) {
+		  setChildren((prevChildren) => [
+			...prevChildren,
+			{ name: "", dateOfBirth: "", gender: "" },
+			{ name: "", dateOfBirth: "", gender: "" },
+		  ]);
+		}
+	  };
+	
+	  const handleNameChange = (index, event) => {
+		const updatedChildren = [...children];
+		updatedChildren[index].name = event.target.value;
+		setChildren(updatedChildren);
+	  };
+	
+	  const handleBirthdateChange = (index, event) => {
+		const updatedChildren = [...children];
+		updatedChildren[index].dateOfBirth = event.target.value;
+		setChildren(updatedChildren);
+	  };
+	
+	  const handleGenderChange = (index, value) => {
+		const updatedChildren = [...children];
+		updatedChildren[index].gender = value;
+		setChildren(updatedChildren);
+	  };
+	
+	  const saveChildren = async () => {
+		// Clear the childResponses array before saving new children
+		childResponses.length = 0;
+	  
+		try {
+		  for (let i = 0; i < children.length; i++) {
+			const child = children[i];
+	  
+			const { data } = await createUpdateChild({
+			  variables: {
+				name: child.name,
+				dateOfBirth: child.dateOfBirth,
+				gender: child.gender,
+			  },
+			});
+	  
+			childResponses[i] = data.createUpdateChild;
+		  }
+	  
+		  console.log(childResponses);
+		  // Perform any necessary actions with the childResponses array
+		} catch (error) {
+		  // Handle any errors
+		  console.error(error);
+		}
+	  };
+	
+	
   
 	return (
 	  <LayoutWrapper>
@@ -268,49 +288,12 @@ import {
 		>
 		  Contacts
 		</Heading>
-		<Box
-		  display="flex"
-		  flexDirection={{ base: "column", md: "column", lg: "row" }}
-		  gap={{ base: "3", md: "3", lg: "5" }}
-		  justifyContent="center"
-		  pt="10"
-		>
+		
 		  <Cardcontact />
-		  <Cardcontact />
-		</Box>
-		<Box
-		  bg="#1F1F1F"
-		  display="flex"
-		  justifyContent="center"
-		  borderRadius="40"
-		  p={{ base: "2", md: "2", lg: "5" }}
-		  width={{ base: "10%", md: "4%", lg: "5%" }}
-		  alignContent="center"
-		  mx="auto"
-		  mt="-21"
-		  position="relative"
-		  zIndex="5"
-		>
-		  <Image src="plus.svg" alt="plus.svg" />
-		</Box>
-		<Box textAlign="center" pt="10">
-		  <Button
-			as={Link}
-			href="/userprofile"
-			type="submit"
-			bg="#1F1F1F"
-			colorScheme={"#1F1F1F"}
-			color="#FFFFFF"
-			fontSize="14px"
-			fontWeight="400"
-			lineHeight={"150%"}
-			p="8px 40px"
-			borderRadius={"50px"}
-			border="1px solid white"
-		  >
-			Save Children
-		  </Button>
-		</Box>
+		 
+		
+		
+		
 	  </LayoutWrapper>
 	);
   };
