@@ -70,7 +70,7 @@ const LoginPage = () => {
 				localStorage.setItem("token", accessToken);
 
 				if (rest.userType === "PARENT") {
-					// router.push("/parentlogin");
+					router.push("/parentlogin");
 				} else {
 					try {
 						const myProvider = await getMyProvider();
