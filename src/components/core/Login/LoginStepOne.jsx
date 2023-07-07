@@ -13,6 +13,7 @@ import {
 import { useRouter } from "next/router";
 import LayoutWrapper from "../LayoutWrapper/LayoutWrapper";
 import { useLazyQuery, gql } from "@apollo/client";
+import { setCookie } from "nookies";
 
 const LOGIN_QUERY = gql`
 	query LoginUser($email: String!, $password: String!) {
@@ -69,6 +70,12 @@ const LoginPage = () => {
 				const { accessToken, ...rest } = response.data.loginUser;
 				localStorage.setItem("token", accessToken);
 
+				setCookie(null, "accessToken", accessToken, {
+					maxAge: 30 * 24 * 60 * 60, // Set cookie expiration time (30 days in this example)
+					path: "/", // Set cookie path
+				});
+
+				// Redirect to protected page after successful login
 				if (rest.userType === "PARENT") {
 					router.push("/parentlogin");
 				} else {
@@ -100,7 +107,6 @@ const LoginPage = () => {
 			<Box maxW={"1760px"} w="100%" px="20px" mx={"auto"}>
 				<Box py={{ base: "40px", md: "85px" }}>
 					<Text
-					
 						fontSize="48px"
 						fontWeight="700"
 						lineHeight="58px"
@@ -111,7 +117,6 @@ const LoginPage = () => {
 
 					<Text
 						pt="30px"
-						
 						maxW={"1195px"}
 						fontWeight="700px"
 						fontSize={{ base: "18px", md: "24px", lg: "26px", xl: "32px" }}
