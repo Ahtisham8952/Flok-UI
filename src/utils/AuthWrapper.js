@@ -45,13 +45,7 @@ export function AuthWrapper({ children }) {
 
   return (
     <ApolloProvider client={client}>
-      {isAuthenticated ? (
-        children
-      ) : (
-        // Render your authentication components here, e.g., <Login />
-        // Replace <Login /> with your actual authentication component
-        <LoginPageFlow />
-      )}
+      {isAuthenticated ? children : <LoginPageFlow />}
     </ApolloProvider>
   );
 }
