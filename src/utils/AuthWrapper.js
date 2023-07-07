@@ -3,12 +3,12 @@ import {
   ApolloProvider,
   InMemoryCache,
   createHttpLink,
-} from "@apollo/client";
-import { setContext } from "@apollo/client/link/context";
-import { useEffect, useState } from "react";
-import LoginPageFlow from "../../pages/login";
-import { parseCookies } from "nookies";
-import { useRouter } from "next/router";
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { useEffect, useState } from 'react';
+import LoginPageFlow from '../../pages/login';
+import { parseCookies } from 'nookies';
+import { useRouter } from 'next/router';
 
 const BASE_URL = process.env.GRAPHQL_API_URL;
 
@@ -21,7 +21,7 @@ const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers,
-      authorization: accessToken ? `Bearer ${accessToken}` : "",
+      authorization: accessToken ? `Bearer ${accessToken}` : '',
     },
   };
 });
@@ -39,7 +39,7 @@ export function AuthWrapper({ children }) {
     if (accessToken) {
       setIsAuthenticated(true);
     } else {
-      router.replace("/login");
+      router.replace('/login');
     }
   }, []);
 
