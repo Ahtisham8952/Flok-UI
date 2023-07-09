@@ -8,8 +8,8 @@ import {
   PopoverTrigger,
 } from '@chakra-ui/react';
 import { useState } from 'react';
-import MenuCollapseComponent from './MenuCollapse';
-import MenuMainLink from './MenuMainLink';
+// import MenuCollapseComponent from './MenuCollapse';
+// import MenuMainLink from './MenuMainLink';
 
 const tradeLinks = [
   {
@@ -160,7 +160,7 @@ const MenuComponent = () => {
           </PopoverTrigger>
           <PopoverContent borderRadius={'0px'} top={'15px'}>
             <PopoverBody p={'0px'} borderRadius={'0px'}>
-              <MenuMainLink
+              {/* <MenuMainLink
                 menuLinkImg="https://cdn.enochdev.com/starget-bucket/header-menu/dashboard.svg"
                 menuItem="Dashboard"
                 menuUrl="#"
@@ -184,7 +184,7 @@ const MenuComponent = () => {
                 links={Personal}
                 btnText="Personal"
                 btnImg="https://cdn.enochdev.com/starget-bucket/header-menu/personal-icon.svg"
-              />
+              /> */}
               {/* <MenuMainLink
                 menuLinkImg="https://cdn.enochdev.com/starget-bucket/header-menu/calendar.svg"
                 menuItem="Calendar"

@@ -1,7 +1,8 @@
 import { Box, Button, Flex, Image, Text, Link } from '@chakra-ui/react';
 import React from 'react';
 
-const TemplateSliderCard = ({ image, Name, TrxID, rediectPage }) => {
+//TODO: remove this any
+const TemplateSliderCard = ({ image, Name, TrxID, rediectPage }: any) => {
   return (
     <Box
       href={rediectPage}
