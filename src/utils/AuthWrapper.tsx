@@ -46,6 +46,8 @@ export function AuthWrapper({ children }: AuthWrapperProps) {
       router.replace('/signup');
     } else if (router.pathname === '/') {
       router.replace('/');
+    } else if (router.pathname === '/terms') {
+      router.replace('/terms');
     }
   }, []);
 

@@ -2,7 +2,7 @@ import '@fontsource/poppins';
 require('@south-paw/typeface-vag-rounded');
 import { extendTheme } from '@chakra-ui/react';
 
-export const mynewtheme = extendTheme({
+export const flokAppTheme = extendTheme({
   colors: {
     primary: '#258CEC ',
     secondry: '#6943FF',
@@ -13,19 +13,16 @@ export const mynewtheme = extendTheme({
         line: {
           tab: {
             color: '#FFFFFF',
-            borderbottom: 'none',
-
+            borderBottom: 'none',
             _selected: {
               borderColor: '#1673FF',
-              borderbottom: '4px solid #1673FF',
+              borderBottom: '4px solid #1673FF',
               color: '#1673FF',
             },
           },
         },
       },
     },
-  },
-  components: {
     Checkbox: {
       baseStyle: {
         control: {
@@ -43,12 +40,12 @@ export const mynewtheme = extendTheme({
     lg: '991px',
     xl: '1280px',
     xxl: '1440px',
-    xxxl: '1660',
+    xxxl: '1660px', // Added missing 'px' suffix
   },
   fonts: {
     dinFonts: `"D-DIN", sans-serif`,
-    body: `"VAGRounded", sans-serif;`,
-    raleway: `"Raleway", sans-serif;`,
-    rajdhaniFont: `"Rajdhani", sans-serif;`,
+    body: `"VAGRounded", sans-serif`,
+    raleway: `"Raleway", sans-serif`,
+    rajdhaniFont: `"Rajdhani", sans-serif`,
   },
 });

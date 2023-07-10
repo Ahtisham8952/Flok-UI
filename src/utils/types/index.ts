@@ -15,3 +15,12 @@ export type ReviewTableData = {
   MovieName: string;
   Review: string;
 }[];
+
+export type UserType = {
+  accessToken: string;
+  userType: string;
+  id: string;
+  name: string;
+  email: string;
+  profileImageURL: string | null;
+};

@@ -1,12 +1,12 @@
-import { Box } from '@chakra-ui/react';
 import DashboardMain from '../../src/components/app/Flok/DashBoardComponet/index';
+import { userRoles } from '../../src/utils/enums';
 
 const DashboardPage = () => {
-  return (
-    <Box>
-      <DashboardMain />
-    </Box>
-  );
+  return <DashboardMain />;
 };
 
+DashboardPage.auth = {
+  role: [userRoles.ADMIN],
+  redirectPath: '/login',
+};
 export default DashboardPage;
