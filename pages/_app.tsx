@@ -1,9 +1,9 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import '@fontsource/rajdhani';
 import { mynewtheme } from '../src/theme';
-import { AuthWrapper } from '../src/utils/AuthWrapper';
 import '../styles/globals.css';
 import { ComponentType } from 'react';
+import { AuthWrapper } from '../src/utils/AuthWrapper';
 
 type AppProps = {
   Component: ComponentType;

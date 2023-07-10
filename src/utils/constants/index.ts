@@ -1,5 +1,9 @@
 import { EventsData } from '../types';
 
+export const cookiesOptions = {
+  maxAge: 30 * 24 * 60 * 60, // Set cookie expiration time (30 days in this example)
+  path: '/', // Set cookie path
+};
 export const eventsData: EventsData = {
   sports: {
     banner: {

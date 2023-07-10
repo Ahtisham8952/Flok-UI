@@ -13,6 +13,7 @@ import { useRouter } from 'next/router';
 import { setCookie } from 'nookies';
 import { FC, FormEvent, useState } from 'react';
 import LayoutWrapper from '../LayoutWrapper/LayoutWrapper';
+import { cookiesOptions } from '../../../utils/constants';
 
 const LOGIN_QUERY = gql`
   query LoginUser($email: String!, $password: String!) {
@@ -67,13 +68,8 @@ const LoginPage: FC<{ nextPage: () => void }> = ({ nextPage }) => {
 
       if (response && response.data && response.data.loginUser) {
         const { accessToken, ...rest } = response.data.loginUser;
-        localStorage.setItem('token', accessToken);
-
-        setCookie(null, 'accessToken', accessToken, {
-          maxAge: 30 * 24 * 60 * 60, // Set cookie expiration time (30 days in this example)
-          path: '/', // Set cookie path
-        });
-
+        const cookieValue = JSON.stringify({ ...response.data.loginUser });
+        setCookie(null, 'userData', cookieValue, cookiesOptions);
         // Redirect to protected page after successful login
         if (rest.userType === 'PARENT') {
           // router.push("/parentlogin");

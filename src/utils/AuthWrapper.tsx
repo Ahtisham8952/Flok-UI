@@ -8,6 +8,7 @@ import { setContext } from '@apollo/client/link/context';
 import { useRouter } from 'next/router';
 import { parseCookies } from 'nookies';
 import { useEffect } from 'react';
+import { AuthWrapperProps } from './interfaces';
 
 const BASE_URL = process.env.GRAPHQL_API_URL;
 
@@ -30,12 +31,13 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-export function AuthWrapper({ children }) {
+export function AuthWrapper({ children }: AuthWrapperProps) {
   const router = useRouter();
+  const { userData } = parseCookies();
   useEffect(() => {
-    const { accessToken } = parseCookies();
+    const parsedUserData = userData ? JSON.parse(userData) : null;
     if (
-      !accessToken &&
+      !parsedUserData?.accessToken &&
       router.pathname !== '/signup' &&
       router.pathname !== '/'
     ) {
