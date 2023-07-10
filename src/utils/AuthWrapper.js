@@ -5,10 +5,9 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { useEffect, useState } from 'react';
-import LoginPageFlow from '../../pages/login';
-import { parseCookies } from 'nookies';
 import { useRouter } from 'next/router';
+import { parseCookies } from 'nookies';
+import { useEffect } from 'react';
 
 const BASE_URL = process.env.GRAPHQL_API_URL;
 
@@ -32,20 +31,21 @@ const client = new ApolloClient({
 });
 
 export function AuthWrapper({ children }) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const router = useRouter();
   useEffect(() => {
     const { accessToken } = parseCookies();
-    if (accessToken) {
-      setIsAuthenticated(true);
-    } else {
+    if (
+      !accessToken &&
+      router.pathname !== '/signup' &&
+      router.pathname !== '/'
+    ) {
       router.replace('/login');
+    } else if (router.pathname === '/signup') {
+      router.replace('/signup');
+    } else if (router.pathname === '/') {
+      router.replace('/');
     }
   }, []);
 
-  return (
-    <ApolloProvider client={client}>
-      {isAuthenticated ? children : <LoginPageFlow />}
-    </ApolloProvider>
-  );
+  return <ApolloProvider client={client}>{children}</ApolloProvider>;
 }
