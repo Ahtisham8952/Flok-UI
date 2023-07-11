@@ -39,7 +39,9 @@ export function AuthWrapper({ children }: AuthWrapperProps) {
     if (
       !parsedUserData?.accessToken &&
       router.pathname !== '/signup' &&
-      router.pathname !== '/'
+      router.pathname !== '/organization/dashboard' &&
+      router.pathname !== '/admin/dashboard' &&
+      router.pathname !== '/event'
     ) {
       router.replace('/login');
     } else if (router.pathname === '/signup') {
