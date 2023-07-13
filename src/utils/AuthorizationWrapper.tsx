@@ -22,7 +22,7 @@ const ClientAuthorizationWrapper = ({
     : null;
 
   useEffect(() => {
-    if (!role || role.some((elem) => elem !== parsedUserData?.userType)) {
+    if (!role || role.some((elem) => elem === parsedUserData?.userType)) {
       setIsAuthorized(true);
     } else {
       setIsAuthorized(false);
