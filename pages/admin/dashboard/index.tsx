@@ -1,5 +1,5 @@
-import DashboardMain from '../../src/components/app/Flok/DashBoardComponet/index';
-import { userRoles } from '../../src/utils/enums';
+import DashboardMain from '../../../src/components/app/Flok/DashBoardComponet/index';
+import { userRoles } from '../../../src/utils/enums';
 
 const DashboardPage = () => {
   return <DashboardMain />;
