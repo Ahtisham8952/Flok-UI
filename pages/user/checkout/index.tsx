@@ -1,17 +1,15 @@
+import React from 'react';
+import GuestCheckOut from '../../../src/components/app/Flok/CheckoutComponent/GuestCheckOut';
 import { GetServerSideProps } from 'next';
-import Organization from '../../../src/components/app/Flok/OrganizationComponent/OrganizationPageStyle1';
-import { userRoles } from '../../../src/utils/enums';
 import { parseCookies } from 'nookies';
 import { UserType } from '../../../src/utils/types';
+import { userRoles } from '../../../src/utils/enums';
 
-interface OrganizationPageStyle1Props {}
-const OrganizationPageStyle1 = () => {
-  return <Organization />;
+const CheckoutGuest = () => {
+  return <GuestCheckOut />;
 };
 
-export const getServerSideProps: GetServerSideProps<
-  OrganizationPageStyle1Props
-> = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const cookies = parseCookies(context);
   const parsedUserData: UserType = cookies.userData
     ? JSON.parse(cookies.userData)
@@ -23,7 +21,7 @@ export const getServerSideProps: GetServerSideProps<
         permanent: false,
       },
     };
-  } else if (parsedUserData.userType !== userRoles.PROVIDER) {
+  } else if (parsedUserData.userType !== userRoles.PARENT) {
     return {
       redirect: {
         destination: '/',
@@ -36,4 +34,5 @@ export const getServerSideProps: GetServerSideProps<
     props: {},
   };
 };
-export default OrganizationPageStyle1;
+
+export default CheckoutGuest;

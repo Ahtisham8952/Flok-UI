@@ -1,8 +1,8 @@
 import { GetServerSideProps } from 'next';
 import { parseCookies } from 'nookies';
-import { ParentProfile } from '../../../src/components/app/Flok/UserProfile/ParentProfile';
-import { userRoles } from '../../../src/utils/enums';
-import { UserType } from '../../../src/utils/types';
+import { ParentProfile } from '../../src/components/app/Flok/UserProfile/ParentProfile';
+import { userRoles } from '../../src/utils/enums';
+import { UserType } from '../../src/utils/types';
 
 interface ParentProfilePageProps {}
 const ParentProfilePage = () => {
@@ -23,7 +23,7 @@ export const getServerSideProps: GetServerSideProps<
         permanent: false,
       },
     };
-  } else if (parsedUserData.userType !== userRoles.PROVIDER) {
+  } else if (parsedUserData.userType !== userRoles.PARENT) {
     return {
       redirect: {
         destination: '/',

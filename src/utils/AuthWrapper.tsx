@@ -32,24 +32,5 @@ const client = new ApolloClient({
 });
 
 export function AuthWrapper({ children }: AuthWrapperProps) {
-  const router = useRouter();
-  const { userData } = parseCookies();
-  useEffect(() => {
-    const parsedUserData = userData ? JSON.parse(userData) : null;
-    if (
-      !parsedUserData?.accessToken &&
-      router.pathname !== '/signup' &&
-      router.pathname !== '/'
-    ) {
-      router.replace('/login');
-    } else if (router.pathname === '/signup') {
-      router.replace('/signup');
-    } else if (router.pathname === '/') {
-      router.replace('/');
-    } else if (router.pathname === '/terms') {
-      router.replace('/terms');
-    }
-  }, []);
-
   return <ApolloProvider client={client}>{children}</ApolloProvider>;
 }

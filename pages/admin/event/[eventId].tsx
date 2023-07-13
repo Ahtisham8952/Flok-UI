@@ -1,18 +1,14 @@
 import { GetServerSideProps } from 'next';
 import { parseCookies } from 'nookies';
-import { FC } from 'react';
 import AdminEventForm from '../../../src/components/app/Flok/EventPage/AdminEventForm';
 import { userRoles } from '../../../src/utils/enums';
 import { UserType } from '../../../src/utils/types';
 
-interface AdminEventPageProps {}
-const AdminEventPage: FC<AdminEventPageProps> = () => {
+const AdminEventPage = () => {
   return <AdminEventForm />;
 };
 
-export const getServerSideProps: GetServerSideProps<
-  AdminEventPageProps
-> = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const cookies = parseCookies(context);
   const parsedUserData: UserType = cookies.userData
     ? JSON.parse(cookies.userData)
@@ -24,7 +20,7 @@ export const getServerSideProps: GetServerSideProps<
         permanent: false,
       },
     };
-  } else if (parsedUserData.userType !== userRoles.PARENT) {
+  } else if (parsedUserData.userType !== userRoles.ADMIN) {
     return {
       redirect: {
         destination: '/',

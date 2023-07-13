@@ -85,7 +85,7 @@ const Header = () => {
                   fontWeight="400"
                   lineHeight={'24px'}
                 >
-                  <Link href="\login" _hover={{ textDecoration: 'none' }}>
+                  <Link href="/login" _hover={{ textDecoration: 'none' }}>
                     Login
                   </Link>
                 </Box>

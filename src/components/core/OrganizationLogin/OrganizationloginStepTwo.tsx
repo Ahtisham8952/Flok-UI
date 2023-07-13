@@ -45,7 +45,7 @@ export const OrganizationloginStepTwo: FC<{ seeProfile: () => void }> = ({
     setAbout('');
     setStaff('');
     setStaffImages([]);
-    router.push('/organizationprofile');
+    router.push('/organization');
   };
   return (
     <Box p="30px">

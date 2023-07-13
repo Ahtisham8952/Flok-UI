@@ -1,17 +1,15 @@
 import { GetServerSideProps } from 'next';
-import OrganizationPage2 from '../../../src/components/app/Flok/OrganizationComponent/OrganizationPageStyle2';
-import { userRoles } from '../../../src/utils/enums';
 import { parseCookies } from 'nookies';
+import UserCreateEvent from '../../../src/components/app/Flok/EventPage/Events';
+import { userRoles } from '../../../src/utils/enums';
 import { UserType } from '../../../src/utils/types';
+import { FC } from 'react';
 
-interface OrganizationPageStyle2Props {}
-const OrganizationPageStyle2 = () => {
-  return <OrganizationPage2 />;
+const CreateEventPage = () => {
+  return <UserCreateEvent />;
 };
 
-export const getServerSideProps: GetServerSideProps<
-  OrganizationPageStyle2Props
-> = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const cookies = parseCookies(context);
   const parsedUserData: UserType = cookies.userData
     ? JSON.parse(cookies.userData)
@@ -36,4 +34,5 @@ export const getServerSideProps: GetServerSideProps<
     props: {},
   };
 };
-export default OrganizationPageStyle2;
+
+export default CreateEventPage;

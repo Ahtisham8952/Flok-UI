@@ -140,7 +140,7 @@ const EventMain = () => {
                   >
                     This Organization is Managing This Event{' '}
                     <Link
-                      href="/organizationPageStyle1"
+                      href="/organization/organizationId"
                       fontSize="18px"
                       fontWeight="700"
                     >

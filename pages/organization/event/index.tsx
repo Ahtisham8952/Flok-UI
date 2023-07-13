@@ -5,14 +5,11 @@ import { GetServerSideProps } from 'next';
 import { parseCookies } from 'nookies';
 import { UserType } from '../../../src/utils/types';
 
-interface HomeProps {}
 const Home = () => {
   return <EventMain />;
 };
 
-export const getServerSideProps: GetServerSideProps<HomeProps> = async (
-  context
-) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const cookies = parseCookies(context);
   const parsedUserData: UserType = cookies.userData
     ? JSON.parse(cookies.userData)
@@ -37,4 +34,5 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async (
     props: {},
   };
 };
+
 export default Home;

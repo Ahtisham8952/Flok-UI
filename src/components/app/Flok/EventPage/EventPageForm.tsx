@@ -198,7 +198,7 @@ const EventPageForm = () => {
       };
 
       await createEvent({ variables: { createEventInput } });
-      router.push('/organizationprofile');
+      router.push('/organization');
     } catch (err) {
       console.log(err);
     }

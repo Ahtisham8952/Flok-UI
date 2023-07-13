@@ -72,7 +72,7 @@ const LoginPage: FC<{ nextPage: () => void }> = ({ nextPage }) => {
         setCookie(null, 'userData', cookieValue, cookiesOptions);
         // Redirect to protected page after successful login
         if (rest.userType === 'PARENT') {
-          // router.push("/parentlogin");
+          router.push('/user');
         } else {
           try {
             const myProvider = await getMyProvider();
@@ -80,9 +80,9 @@ const LoginPage: FC<{ nextPage: () => void }> = ({ nextPage }) => {
               myProvider?.error?.message ===
               "Cannot read properties of null (reading 'provider')"
             ) {
-              router.push('/organizationlogin/stepone');
+              router.push('/organization/login/1');
             } else {
-              router.push('/organizationprofile');
+              router.push('/organization');
             }
           } catch (err) {
             console.log('err', err);

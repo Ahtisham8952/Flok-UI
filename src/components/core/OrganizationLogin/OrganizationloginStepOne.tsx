@@ -71,7 +71,7 @@ export const OrganizationloginStepOne: FC<{ nextStep: () => void }> = ({
           titleName: name,
         },
       });
-      router.push('/organizationlogin/steptwo');
+      router.push('/organization/login/2');
     } catch (err) {
       console.log(err);
     } finally {

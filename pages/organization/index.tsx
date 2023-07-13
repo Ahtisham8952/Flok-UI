@@ -1,17 +1,14 @@
 import { GetServerSideProps } from 'next';
-import OrganizationPage3 from '../../../src/components/app/Flok/OrganizationComponent/OrganizationPageStyle3';
-import { userRoles } from '../../../src/utils/enums';
+import { OrganizationProfile } from '../../src/components/app/Flok/OrganizationComponent/OrganizationProfile';
+import { userRoles } from '../../src/utils/enums';
 import { parseCookies } from 'nookies';
-import { UserType } from '../../../src/utils/types';
+import { UserType } from '../../src/utils/types';
 
-interface OrganizationPageStyle3Props {}
-const OrganizationPageStyle3 = () => {
-  return <OrganizationPage3 />;
+const OrganizationProfilePage = () => {
+  return <OrganizationProfile />;
 };
 
-export const getServerSideProps: GetServerSideProps<
-  OrganizationPageStyle3Props
-> = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const cookies = parseCookies(context);
   const parsedUserData: UserType = cookies.userData
     ? JSON.parse(cookies.userData)
@@ -36,4 +33,5 @@ export const getServerSideProps: GetServerSideProps<
     props: {},
   };
 };
-export default OrganizationPageStyle3;
+
+export default OrganizationProfilePage;

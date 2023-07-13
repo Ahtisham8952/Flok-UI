@@ -1,18 +1,15 @@
 import React from 'react';
-import OrganizationPageStyle4 from '../../../src/components/app/Flok/OrganizationComponent/OrganizationPageStyle4';
-import { userRoles } from '../../../src/utils/enums';
+import { OrganizationloginStepTwo } from '../../../src/components/core/OrganizationLogin/OrganizationloginStepTwo';
 import { GetServerSideProps } from 'next';
 import { parseCookies } from 'nookies';
 import { UserType } from '../../../src/utils/types';
+import { userRoles } from '../../../src/utils/enums';
 
-interface OrganizationPageFourProps {}
-const OrganizationPageFour = () => {
-  return <OrganizationPageStyle4 />;
+const StepTwoPage = () => {
+  return <OrganizationloginStepTwo seeProfile={() => {}} />;
 };
 
-export const getServerSideProps: GetServerSideProps<
-  OrganizationPageFourProps
-> = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const cookies = parseCookies(context);
   const parsedUserData: UserType = cookies.userData
     ? JSON.parse(cookies.userData)
@@ -37,4 +34,5 @@ export const getServerSideProps: GetServerSideProps<
     props: {},
   };
 };
-export default OrganizationPageFour;
+
+export default StepTwoPage;

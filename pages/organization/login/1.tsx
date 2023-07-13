@@ -1,17 +1,15 @@
+import React from 'react';
+import { OrganizationloginStepOne } from '../../../src/components/core/OrganizationLogin/OrganizationloginStepOne';
 import { GetServerSideProps } from 'next';
-import { OrganizationTemplateEdit } from '../../../src/components/app/Flok/OrganizationComponent/OrganizationTemplateEdit';
-import { userRoles } from '../../../src/utils/enums';
 import { parseCookies } from 'nookies';
 import { UserType } from '../../../src/utils/types';
+import { userRoles } from '../../../src/utils/enums';
 
-interface EditPageORGProps {}
-const EditPageORG = () => {
-  return <OrganizationTemplateEdit />;
+const OrganizationLoginPage = () => {
+  return <OrganizationloginStepOne nextStep={() => {}} />;
 };
 
-export const getServerSideProps: GetServerSideProps<EditPageORGProps> = async (
-  context
-) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const cookies = parseCookies(context);
   const parsedUserData: UserType = cookies.userData
     ? JSON.parse(cookies.userData)
@@ -36,4 +34,5 @@ export const getServerSideProps: GetServerSideProps<EditPageORGProps> = async (
     props: {},
   };
 };
-export default EditPageORG;
+
+export default OrganizationLoginPage;

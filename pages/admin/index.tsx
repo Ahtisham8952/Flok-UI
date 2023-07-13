@@ -1,18 +1,14 @@
 import { GetServerSideProps } from 'next';
 import { parseCookies } from 'nookies';
-import { FC } from 'react';
-import DashboardMain from '../../../src/components/app/Flok/DashBoardComponet/index';
-import { userRoles } from '../../../src/utils/enums';
-import { UserType } from '../../../src/utils/types';
+import DashboardMain from '../../src/components/app/Flok/DashBoardComponet/index';
+import { userRoles } from '../../src/utils/enums';
+import { UserType } from '../../src/utils/types';
 
-interface DashboardPageProps {}
-const DashboardPage: FC<DashboardPageProps> = () => {
+const DashboardPage = () => {
   return <DashboardMain />;
 };
 
-export const getServerSideProps: GetServerSideProps<
-  DashboardPageProps
-> = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const cookies = parseCookies(context);
   const parsedUserData: UserType = cookies.userData
     ? JSON.parse(cookies.userData)
@@ -24,7 +20,7 @@ export const getServerSideProps: GetServerSideProps<
         permanent: false,
       },
     };
-  } else if (parsedUserData.userType !== userRoles.PARENT) {
+  } else if (parsedUserData.userType !== userRoles.ADMIN) {
     return {
       redirect: {
         destination: '/',
