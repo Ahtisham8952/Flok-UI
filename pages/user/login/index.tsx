@@ -1,4 +1,4 @@
-import LoginStepTwo from '../../src/components/core/Login/LoginStepTwo';
+import LoginStepTwo from '../../../src/components/core/Login/LoginStepTwo';
 
 const ParentLoginPage = () => {
   return <LoginStepTwo />;

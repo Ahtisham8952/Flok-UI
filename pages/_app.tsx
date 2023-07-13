@@ -3,16 +3,10 @@ import '@fontsource/rajdhani';
 import { ComponentType } from 'react';
 import { flokAppTheme } from '../src/theme';
 import { AuthWrapper } from '../src/utils/AuthWrapper';
-import AuthorizationWrapper from '../src/utils/AuthorizationWrapper';
 import '../styles/globals.css';
 
 type AppProps = {
-  Component: ComponentType & {
-    auth?: {
-      role?: string[];
-      redirectPath?: string;
-    };
-  };
+  Component: ComponentType;
   pageProps: Record<string, unknown>;
 };
 
@@ -20,16 +14,7 @@ const Flok = ({ Component, pageProps }: AppProps) => {
   return (
     <ChakraProvider resetCSS theme={flokAppTheme}>
       <AuthWrapper>
-        {Component.auth ? (
-          <AuthorizationWrapper
-            role={Component.auth?.role}
-            redirectPath={Component.auth?.redirectPath}
-          >
-            <Component {...pageProps} />
-          </AuthorizationWrapper>
-        ) : (
-          <Component {...pageProps} />
-        )}
+        <Component {...pageProps} />
       </AuthWrapper>
     </ChakraProvider>
   );

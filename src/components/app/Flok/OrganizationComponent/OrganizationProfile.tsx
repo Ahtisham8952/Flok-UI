@@ -291,7 +291,7 @@ export const OrganizationProfile = () => {
               </Text>
               <Button
                 as={Link}
-                href="/createevent"
+                href="/createEvent"
                 bg="#1F1F1F"
                 colorScheme={'#1F1F1F'}
                 color="#FFFFFF"
